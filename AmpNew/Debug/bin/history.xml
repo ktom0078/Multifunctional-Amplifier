@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<history>
+   <processor signature="5.4.1 -mcpu=cortex-m4 -mthumb -g -nostartfiles -Map=AmpNew.map -O0 --gc-sections -LC:\CooCox\CoIDE\configuration\ProgramData\AmpNew -TC:\CooCox\CoIDE\configuration\ProgramData\AmpNew/arm-gcc-link.ld -g">
+      <target file="AmpNew.elf" lastModified="157e85a323a">
+         <source file="..\obj\i2c.o" lastModified="157e3f0cb52"/>
+         <source file="..\obj\startup_stm32f4xx.o" lastModified="157de9ed04e"/>
+         <source file="..\obj\main.o" lastModified="157e85a3055"/>
+         <source file="..\obj\stm32f4xx_rcc.o" lastModified="157de9ed148"/>
+         <source file="..\obj\gpio.o" lastModified="157e3ea8408"/>
+         <source file="..\obj\stm32f4xx_gpio.o" lastModified="157de9ed217"/>
+         <source file="..\obj\system_stm32f4xx.o" lastModified="157de9ed27a"/>
+         <source file="..\obj\preamp.o" lastModified="157e8576115"/>
+         <source file="..\obj\stm32f4xx_i2c.o" lastModified="157de9ed307"/>
+      </target>
+   </processor>
+</history>
