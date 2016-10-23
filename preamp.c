@@ -2,6 +2,7 @@
 #include "i2c.h"
 #include "gpio.h"
 
+/* Inits the tda7318 preamp ic */
 void PreampInit()
 {
 	I2C_Init_Amp();
@@ -12,7 +13,7 @@ void PreampInit()
 /* Sets the volume on preamp, input val max: 0 - min : 63 */
 void PreampSetVol(unsigned char vol)
 {
-	if(vol >= 0 && vol <= 63)
+	if(vol >= 20 && vol <= 63)
 	{
 		I2C_write(I2C1, vol); //set main vol
 	}
