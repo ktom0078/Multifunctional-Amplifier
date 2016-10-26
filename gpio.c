@@ -5,6 +5,7 @@
 
 void Gpio_Init()
 {
+	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOA, ENABLE);
 	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOB, ENABLE);
 	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOC, ENABLE);
 
@@ -30,6 +31,14 @@ void Gpio_Init()
 	GPIO_InitStruct3.GPIO_Speed = GPIO_Speed_2MHz;
 	GPIO_InitStruct3.GPIO_PuPd = GPIO_PuPd_NOPULL;
 	GPIO_Init(ROT_PORT, &GPIO_InitStruct3);
+
+	GPIO_InitTypeDef GPIO_InitStruct4;
+	GPIO_InitStruct4.GPIO_Pin = NCOMMAND_PIN;
+	GPIO_InitStruct4.GPIO_Mode = GPIO_Mode_OUT;
+	GPIO_InitStruct4.GPIO_Speed = GPIO_Speed_2MHz;
+	GPIO_InitStruct4.GPIO_OType = GPIO_OType_PP;
+	GPIO_InitStruct4.GPIO_PuPd = GPIO_PuPd_NOPULL;
+	GPIO_Init(NCOMMAND_PORT, &GPIO_InitStruct4);
 
 	GPIO_WriteBit(I2C_PORT,I2C_OE_PIN,Bit_SET);  // disable OE
 

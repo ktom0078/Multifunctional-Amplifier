@@ -12,6 +12,9 @@
 #define ROT_PORT			GPIOC
 #define ROT_SW_PIN			GPIO_Pin_14
 
+#define NCOMMAND_PIN		GPIO_Pin_2
+#define NCOMMAND_PORT		GPIOA
+
 /* functions */
 
 void Gpio_Init();
