@@ -18,5 +18,7 @@
 /* functions */
 
 void Gpio_Init();
+void Gpio_BT_Enable_Cmd();
+void Gpio_BT_Disable_Cmd();
 
 #endif

@@ -32,6 +32,16 @@ void Gpio_Init()
 	GPIO_InitStruct3.GPIO_PuPd = GPIO_PuPd_NOPULL;
 	GPIO_Init(ROT_PORT, &GPIO_InitStruct3);
 
+
+	GPIO_WriteBit(I2C_PORT,I2C_OE_PIN,Bit_SET);  // disable OE
+
+	GPIO_PinAFConfig(I2C_PORT, GPIO_PinSource6, GPIO_AF_I2C1);	// SCL
+	GPIO_PinAFConfig(I2C_PORT, GPIO_PinSource7, GPIO_AF_I2C1); // SDA
+}
+
+void Gpio_BT_Enable_Cmd()
+{
+	/* Set cmd pin to output and set it to logic  0 */
 	GPIO_InitTypeDef GPIO_InitStruct4;
 	GPIO_InitStruct4.GPIO_Pin = NCOMMAND_PIN;
 	GPIO_InitStruct4.GPIO_Mode = GPIO_Mode_OUT;
@@ -40,8 +50,17 @@ void Gpio_Init()
 	GPIO_InitStruct4.GPIO_PuPd = GPIO_PuPd_NOPULL;
 	GPIO_Init(NCOMMAND_PORT, &GPIO_InitStruct4);
 
-	GPIO_WriteBit(I2C_PORT,I2C_OE_PIN,Bit_SET);  // disable OE
+	/* enable comman mode */
+	GPIO_WriteBit(NCOMMAND_PORT,NCOMMAND_PIN,Bit_RESET);
+}
 
-	GPIO_PinAFConfig(I2C_PORT, GPIO_PinSource6, GPIO_AF_I2C1);	// SCL
-	GPIO_PinAFConfig(I2C_PORT, GPIO_PinSource7, GPIO_AF_I2C1); // SDA
+void Gpio_BT_Disable_Cmd()
+{
+	/* Set cmd pin to input floating  */
+	GPIO_InitTypeDef GPIO_InitStruct4;
+	GPIO_InitStruct4.GPIO_Pin = NCOMMAND_PIN;
+	GPIO_InitStruct4.GPIO_Mode = GPIO_Mode_IN;
+	GPIO_InitStruct4.GPIO_Speed = GPIO_Speed_2MHz;
+	GPIO_InitStruct4.GPIO_PuPd = GPIO_PuPd_NOPULL;
+	GPIO_Init(NCOMMAND_PORT, &GPIO_InitStruct4);
 }

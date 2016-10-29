@@ -4,6 +4,7 @@
 #define PREAMP_AUDIO_SW_CMD (1<<6)
 #define PREAMP_BASS_CMD		(0x6 << 4)
 #define PREAMP_TREBLE_CMD	(0x7 << 4)
+#define PREAMP_STARTUP_VOL 	45
 
 /* definitions */
 typedef enum
