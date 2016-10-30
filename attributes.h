@@ -41,4 +41,7 @@
 	#endif	/* Packed attribute */
 #endif
 
+typedef enum { false = 0, true = !false } bool;
+
+
 #endif

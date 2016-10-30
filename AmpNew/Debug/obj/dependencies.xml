@@ -43,17 +43,19 @@
       <source file="..\..\..\tm_stm32f4_rotary_encoder.c" lastModified="14c40cbd738">
          <include file="..\..\..\tm_stm32f4_rotary_encoder.h"/>
       </source>
-      <source file="..\..\..\preamp.h" lastModified="1581171096f">
+      <source file="..\..\..\preamp.h" lastModified="15816ae904f">
       </source>
       <source file="..\..\..\gpio.c" lastModified="15811d77dea">
          <include file="..\..\..\cmsis_lib\include\stm32f4xx_gpio.h"/>
          <include file="..\..\..\cmsis_lib\include\stm32f4xx_rcc.h"/>
          <include file="..\..\..\gpio.h"/>
       </source>
-      <source file="..\..\..\preamp.c" lastModified="15811742cd9">
+      <source file="..\..\..\preamp.c" lastModified="15816acbebb">
          <include file="..\..\..\preamp.h"/>
          <include file="..\..\..\i2c.h"/>
          <include file="..\..\..\gpio.h"/>
+         <include file="..\..\..\attributes.h"/>
+         <include file="..\..\..\tm_stm32f4_rotary_encoder.h"/>
       </source>
       <source file="..\..\..\cmsis\core_cmFunc.h" lastModified="157de8351c4">
       </source>
@@ -67,7 +69,7 @@
       <source file="..\..\..\cmsis_lib\include\stm32f4xx_exti.h" lastModified="157ed34cccb">
          <include file="..\..\..\cmsis_boot\stm32f4xx.h"/>
       </source>
-      <source file="..\..\..\tm_stm32f4_usart.h" lastModified="1581271fb1e">
+      <source file="..\..\..\tm_stm32f4_usart.h" lastModified="158129399c8">
          <include file="..\..\..\cmsis_lib\include\misc.h"/>
          <include file="..\..\..\cmsis_boot\stm32f4xx.h"/>
          <include file="..\..\..\cmsis_lib\include\stm32f4xx_rcc.h"/>
@@ -103,6 +105,20 @@
       </source>
       <source file="..\..\..\cmsis\core_cmInstr.h" lastModified="157de8351c5">
       </source>
+      <source file="..\..\..\main.c" lastModified="15816b5f0ae">
+         <include file="..\..\..\cmsis_lib\include\stm32f4xx_gpio.h"/>
+         <include file="..\..\..\cmsis_lib\include\stm32f4xx_rcc.h"/>
+         <include file="..\..\..\cmsis_boot\system_stm32f4xx.h"/>
+         <include file="..\..\..\cmsis_boot\stm32f4xx.h"/>
+         <include file="..\..\..\i2c.h"/>
+         <include file="..\..\..\gpio.h"/>
+         <include file="..\..\..\cmsis_lib\include\stm32f4xx_i2c.h"/>
+         <include file="..\..\..\preamp.h"/>
+         <include file="..\..\..\tm_stm32f4_rotary_encoder.h"/>
+         <include file="..\..\..\tm_stm32f4_usart.h"/>
+         <include file="..\..\..\menu.h"/>
+         <include file="..\..\..\bt.h"/>
+      </source>
       <source file="..\..\..\i2c.h" lastModified="157e2837cf1">
          <include file="..\..\..\cmsis_lib\include\stm32f4xx_i2c.h"/>
       </source>
@@ -111,6 +127,8 @@
          <include file="..\..\..\cmsis_lib\include\stm32f4xx_gpio.h"/>
          <include file="..\..\..\cmsis_lib\include\stm32f4xx_rcc.h"/>
       </source>
+      <source file="..\..\..\menu.h" lastModified="15816adc70f">
+      </source>
       <source file="..\..\..\cmsis_lib\include\stm32f4xx_usart.h" lastModified="15801eea9ce">
          <include file="..\..\..\cmsis_boot\stm32f4xx.h"/>
       </source>
@@ -118,12 +136,20 @@
          <include file="..\..\..\cmsis_lib\include\stm32f4xx_usart.h"/>
          <include file="..\..\..\cmsis_lib\include\stm32f4xx_rcc.h"/>
       </source>
+      <source file="..\..\..\menu.c" lastModified="15816c1d763">
+         <include file="..\..\..\menu.h"/>
+         <include file="..\..\..\attributes.h"/>
+         <include file="..\..\..\tm_stm32f4_rotary_encoder.h"/>
+         <include file="..\..\..\preamp.h"/>
+         <include file="..\..\..\bt.h"/>
+      </source>
       <source file="..\..\..\cmsis\core_cm4.h" lastModified="157de834dd9">
          <include file="..\..\..\cmsis\core_cmInstr.h"/>
          <include file="..\..\..\cmsis\core_cmFunc.h"/>
          <include file="..\..\..\cmsis\core_cm4_simd.h"/>
       </source>
-      <source file="..\..\..\bt.h" lastModified="15811d2977d">
+      <source file="..\..\..\bt.h" lastModified="15816b77f37">
+         <include file="..\..\..\attributes.h"/>
       </source>
       <source file="..\..\..\cmsis_boot\system_stm32f4xx.h" lastModified="157de8349b7">
       </source>
@@ -137,22 +163,18 @@
          <include file="..\..\..\cmsis_boot\stm32f4xx.h"/>
          <include file="..\..\..\cmsis_lib\include\stm32f4xx_gpio.h"/>
       </source>
-      <source file="..\..\..\bt.c" lastModified="15811d4d78a">
-         <include file="..\..\..\bt.h"/>
-         <include file="..\..\..\gpio.h"/>
-      </source>
       <source file="..\..\..\cmsis_boot\startup\startup_stm32f4xx.c" lastModified="157de8349a3">
       </source>
       <source file="..\..\..\cmsis_boot\system_stm32f4xx.c" lastModified="157de8349b6">
          <include file="..\..\..\cmsis_boot\stm32f4xx.h"/>
       </source>
-      <source file="..\..\..\attributes.h" lastModified="149ebc5b110">
-      </source>
-      <source file="..\..\..\tm_stm32f4_exti.c" lastModified="14f031f4f9b">
-         <include file="..\..\..\tm_stm32f4_exti.h"/>
+      <source file="..\..\..\attributes.h" lastModified="15816969d2d">
       </source>
       <source file="..\..\..\cmsis_lib\source\stm32f4xx_exti.c" lastModified="157ed34ccf4">
          <include file="..\..\..\cmsis_lib\include\stm32f4xx_exti.h"/>
+      </source>
+      <source file="..\..\..\tm_stm32f4_exti.c" lastModified="14f031f4f9b">
+         <include file="..\..\..\tm_stm32f4_exti.h"/>
       </source>
    </includePath>
 </dependencies>

@@ -1,10 +1,12 @@
 #ifndef PREAMP_H
 #define PREAMP_H
 
-#define PREAMP_AUDIO_SW_CMD (1<<6)
-#define PREAMP_BASS_CMD		(0x6 << 4)
-#define PREAMP_TREBLE_CMD	(0x7 << 4)
-#define PREAMP_STARTUP_VOL 	45
+#define PREAMP_AUDIO_SW_CMD 	(1<<6)
+#define PREAMP_BASS_CMD			(0x6 << 4)
+#define PREAMP_TREBLE_CMD		(0x7 << 4)
+#define PREAMP_STARTUP_VOL 		45
+#define PREAMP_STARTUP_BASS 	15
+#define PREAMP_STARTUP_TREBLE 	10
 
 /* definitions */
 typedef enum
@@ -22,6 +24,9 @@ typedef enum
 	BT,
 }eAudioInput;
 
+extern unsigned char volume;
+extern unsigned char bass;
+extern unsigned char treble;
 
 /* functions */
 void PreampInit();

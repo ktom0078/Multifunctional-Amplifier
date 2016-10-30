@@ -1,9 +1,16 @@
 #include "preamp.h"
 #include "i2c.h"
 #include "gpio.h"
+#include "attributes.h"
+#include "tm_stm32f4_rotary_encoder.h"
 
 #define PREAMP_GENERATE_START  I2C_start(I2C1, TDA7318_I2C_ADDRESS, I2C_Direction_Transmitter)
 #define PREAMP_GENERATE_STOP   I2C_stop(I2C1) // stop the transmission
+
+/* global variables */
+unsigned char volume = PREAMP_STARTUP_VOL;
+unsigned char bass   = PREAMP_STARTUP_BASS;
+unsigned char treble = PREAMP_STARTUP_TREBLE;
 
 /* Inits the tda7318 preamp ic */
 void PreampInit()
@@ -11,11 +18,11 @@ void PreampInit()
 	I2C_Init_Amp();
 	GPIO_WriteBit(I2C_PORT,I2C_OE_PIN,Bit_SET); // enable i2c comms
 
-	PreampSetVol(PREAMP_STARTUP_VOL);
+	PreampSetVol(volume);
 	PreampSetSpeakAtt(FrontRight, 0);
 	PreampSetInputGain(BT,0);
-	PreampSetBass(15);
-	PreampSetTreble(10);
+	PreampSetBass(bass);
+	PreampSetTreble(treble);
 
 }
 
@@ -82,3 +89,4 @@ void PreampSetTreble(unsigned char treble)
 		PREAMP_GENERATE_STOP;
 	}
 }
+
