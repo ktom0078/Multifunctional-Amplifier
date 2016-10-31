@@ -1,7 +1,8 @@
 #include  "stm32f4xx_gpio.h"
 #include  "stm32f4xx_rcc.h"
 #include  "gpio.h"
-
+#include "tm_stm32f4_gpio.h"
+#include "tm_stm32f4_exti.h"
 
 void Gpio_Init()
 {
@@ -32,6 +33,8 @@ void Gpio_Init()
 	GPIO_InitStruct3.GPIO_PuPd = GPIO_PuPd_NOPULL;
 	GPIO_Init(ROT_PORT, &GPIO_InitStruct3);
 
+	/* Init buttons */
+	TM_EXTI_Attach(ROT_PORT, ROT_SW_PIN, TM_EXTI_Trigger_Falling);
 
 	GPIO_WriteBit(I2C_PORT,I2C_OE_PIN,Bit_SET);  // disable OE
 

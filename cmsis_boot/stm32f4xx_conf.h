@@ -50,10 +50,12 @@
 #include "stm32f4xx_tim.h"
 #include "stm32f4xx_usart.h"
 #include "stm32f4xx_wwdg.h"
-#include "misc.h"*/
+include "misc.h"*/
 #include "stm32f4xx_rcc.h"
 #include "stm32f4xx_gpio.h"
 #include "stm32f4xx_i2c.h"
+#include "misc.h"
+#include "stm32f4xx_tim.h"
 /* High level functions for NVIC and SysTick (add-on to CMSIS functions) */
 
 /* Exported types ------------------------------------------------------------*/

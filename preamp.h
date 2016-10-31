@@ -1,13 +1,6 @@
 #ifndef PREAMP_H
 #define PREAMP_H
 
-#define PREAMP_AUDIO_SW_CMD 	(1<<6)
-#define PREAMP_BASS_CMD			(0x6 << 4)
-#define PREAMP_TREBLE_CMD		(0x7 << 4)
-#define PREAMP_STARTUP_VOL 		45
-#define PREAMP_STARTUP_BASS 	15
-#define PREAMP_STARTUP_TREBLE 	10
-
 /* definitions */
 typedef enum
 {
@@ -24,16 +17,29 @@ typedef enum
 	BT,
 }eAudioInput;
 
-extern unsigned char volume;
-extern unsigned char bass;
-extern unsigned char treble;
+typedef enum
+{
+	Nothing = 0,
+	Increase,
+	Decrease,
+}ePreampAction;
+
+
+#define PREAMP_AUDIO_SW_CMD 	(1<<6)
+#define PREAMP_BASS_CMD			(0x6 << 4)
+#define PREAMP_TREBLE_CMD		(0x7 << 4)
+#define PREAMP_STARTUP_VOL 		45
+#define PREAMP_STARTUP_BASS 	15
+#define PREAMP_STARTUP_TREBLE 	10
+#define PREAMP_STARTUP_SRC		BT
+
 
 /* functions */
 void PreampInit();
-void PreampSetVol(unsigned char vol);
+void PreampSetVol(unsigned char* vol, ePreampAction action);
 void PreampSetSpeakAtt(ePreampSpeaker spkr, unsigned char att);
 void PreampSetInputGain(eAudioInput input,unsigned char gain);
-void PreampSetBass(unsigned char bass);
-void PreampSetTreble(unsigned char treble);
+void PreampSetBass(unsigned char* bass,ePreampAction action);
+void PreampSetTreble(unsigned char* treble, ePreampAction action);
 
 #endif
