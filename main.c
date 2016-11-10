@@ -35,6 +35,7 @@ int main(void)
     //Mount drive
     if (f_mount(&FatFs, "", 1) == FR_OK)
     {
+    	PcmPlay("a.raw");
         //Unmount drive, don't forget this!
         f_mount(0, "", 1);
     }
