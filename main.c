@@ -14,6 +14,8 @@
 #include "tm_stm32f4_fatfs.h"
 #include <stdio.h>
 #include <string.h>
+#include "i2s.h"
+#include "pcm.h"
 
 /* Notes */
 /* - needs to add USB drivers
@@ -21,31 +23,18 @@
 
 int main(void)
 {
-	//Fatfs object
-	FATFS FatFs;
-	//File object
-	FIL fil;
+
 	SystemInit();
 	Gpio_Init();
 	PreampInit();
 	TM_USART_Init(UART4, TM_USART_PinsPack_1, 115200);
 	MenuInit();
+	Cs43Init();
 
 	TM_DELAY_Init();
     //Mount drive
-    if (f_mount(&FatFs, "", 1) == FR_OK) {
-
-        //Try to open file
-        if (f_open(&fil, "asd.txt", FA_OPEN_ALWAYS | FA_READ | FA_WRITE) == FR_OK) {
-
-            //If we put more than 0 characters (everything OK)
-            if (f_puts("First string in my file\n", &fil) > 0) {
-            }
-
-            //Close file, don't forget this!
-            f_close(&fil);
-        }
-
+    if (f_mount(&FatFs, "", 1) == FR_OK)
+    {
         //Unmount drive, don't forget this!
         f_mount(0, "", 1);
     }

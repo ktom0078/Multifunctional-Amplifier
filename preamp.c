@@ -19,8 +19,8 @@ void PreampInit()
 	GPIO_WriteBit(I2C_PORT,I2C_OE_PIN,Bit_SET); // enable i2c comms
 
 	PreampSetVol(&volume,Nothing);
-	PreampSetSpeakAtt(FrontRight, 10);
-	PreampSetInputGain(PREAMP_STARTUP_SRC,0);
+	PreampSetSpeakAtt(FrontRight, 20);
+	PreampSetInputGain(PREAMP_STARTUP_SRC,3);
 	PreampSetBass(&bass,Nothing);
 	PreampSetTreble(&treble,Nothing);
 
