@@ -9,6 +9,7 @@
 #include "glcd.h"
 #include "font.h"
 #include "gpio.h"
+#include "tm_stm32f4_delay.h"
 /* Defines -------------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
 /* Private functions ---------------------------------------------------------*/
@@ -17,6 +18,20 @@ GPIO_TypeDef *LCDPort[] = {	GLCD_DB0_PORT,GLCD_DB1_PORT,GLCD_DB2_PORT,GLCD_DB3_P
 							GLCD_DB4_PORT,GLCD_DB5_PORT,GLCD_DB6_PORT,GLCD_DB7_PORT};
 uint16_t LCDPin[] = {	GLCD_DB0_PIN,GLCD_DB1_PIN,GLCD_DB2_PIN,GLCD_DB3_PIN,
 						GLCD_DB4_PIN,GLCD_DB5_PIN,GLCD_DB6_PIN,GLCD_DB7_PIN};
+
+//******************************************************************************************
+// @leírás: Kijelzõ írás-késleltetési idõ.
+//******************************************************************************************
+void Sys_DelayUs(int us)
+{
+	sys_delay = us;
+	while(sys_delay);
+}
+
+void GLCD_Delay(char value)
+{
+	Sys_DelayUs(value);
+}
 
 //******************************************************************************************
 // @leírás: Inicializálja a kijelzõt, majd kirajzolja a kezdõképet.
@@ -52,7 +67,6 @@ void GLCDEN(FunctionalState newState){
 // @paraméter: d_i, 0 = instruction, 1 = data
 //******************************************************************************************
 void GLCD_Write(char cs_s,char d_i,char g_data){
-	uint16_t data = 0x0000;
 	uint32_t i;
 	char bit;
 	switch(cs_s){
@@ -75,28 +89,28 @@ void GLCD_Write(char cs_s,char d_i,char g_data){
 		GPIO_SetBits(GLCD_DI_PORT, GLCD_DI_PIN);	//PD6 = 1 -> Data
 		break;
 	}
-	/*  replace with own DB lcd write
-	data = GPIOE->IDR;
-	data &= 0x00FF;
-	data |= g_data << 8;
-	GPIOE->ODR = data;
-	*/
 
 	for(i=0; i<8; i++)
 	{
-		bit = dataToWrite & 1;
-		GPIO_SetBits(LCDPort[i], (bit)?(LCDPin[i]):0);
-		GPIO_ResetBits(LCDPort[i], (1-bit)?(LCDPin[i]):0);
-		dataToWrite >>= 1;
+		bit = g_data & 1;
+		if(bit)
+		{
+			GPIO_WriteBit(LCDPort[i],(LCDPin[i]),Bit_SET);
+		}
+		else
+		{
+			GPIO_WriteBit(LCDPort[i],LCDPin[i],Bit_RESET);
+		}
+		g_data >>= 1;
 	}
 
 	GLCD_Delay(1);
-	GPIO_SetBits(GPIOD,GPIO_Pin_7);	//GLCD_E = 1
+	GPIO_SetBits(GLCD_E_PORT,GLCD_E_PIN);	//GLCD_E = 1
 	GLCD_Delay(2);
-	GPIO_ResetBits(GPIOD,GPIO_Pin_7);	//GLCD_E = 0
+	GPIO_ResetBits(GLCD_E_PORT,GLCD_E_PIN);	//GLCD_E = 0
 	GLCD_Delay(4);
-	GPIO_ResetBits(GPIOB, GPIO_Pin_4);	//CS1 = 0
-	GPIO_ResetBits(GPIOB, GPIO_Pin_5);	//CS2 = 0
+	GPIO_ResetBits(GLCD_CS1_PORT, GLCD_CS1_PIN);	//CS1 = 0
+	GPIO_ResetBits(GLCD_CS2_PORT, GLCD_CS2_PIN);	//CS2 = 0
 }
 //******************************************************************************************
 // @leírás: Közvetlenül törli a kijelzõt.
@@ -167,9 +181,4 @@ void GLCD_Write_Char(char cPlace,char cX,char cY){
 	  GLCD_Write(chip,1,fontdata[cPlace*5+i]);
 	  }//for
 }
-//******************************************************************************************
-// @leírás: Kijelzõ írás-késleltetési idõ.
-//******************************************************************************************
-void GLCD_Delay(char value){
-	Sys_DelayUs(value);
-}
+

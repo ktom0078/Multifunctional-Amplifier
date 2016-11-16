@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <history>
    <processor signature="5.4.1 -mcpu=cortex-m4 -mthumb -g -nostartfiles -Map=AmpNew.map -O0 --gc-sections -LC:\CooCox\CoIDE\configuration\ProgramData\AmpNew -TC:\CooCox\CoIDE\configuration\ProgramData\AmpNew/arm-gcc-link.ld -g">
-      <target file="AmpNew.elf" lastModified="1585a6e6930">
+      <target file="AmpNew.elf" lastModified="1586f1f66d8">
          <source file="..\obj\tm_stm32f4_fatfs.o" lastModified="1585a5db145"/>
          <source file="..\obj\unicode.o" lastModified="1585a5db197"/>
          <source file="..\obj\stm32f4xx_syscfg.o" lastModified="1585a5db200"/>
@@ -9,25 +9,25 @@
          <source file="..\obj\pcm.o" lastModified="1585a5db3e0"/>
          <source file="..\obj\i2c.o" lastModified="1585a5db465"/>
          <source file="..\obj\tm_stm32f4_exti.o" lastModified="1585a5db4f1"/>
-         <source file="..\obj\timer.o" lastModified="1585a5db55f"/>
+         <source file="..\obj\timer.o" lastModified="1586f1a73dd"/>
          <source file="..\obj\usbh_hcs.o" lastModified="1585a5db5dd"/>
          <source file="..\obj\stm32f4xx_usart.o" lastModified="1585a5db695"/>
          <source file="..\obj\usbh_stdreq.o" lastModified="1585a5db743"/>
-         <source file="..\obj\diskio.o" lastModified="1585a5db7f9"/>
+         <source file="..\obj\diskio.o" lastModified="1586f115a01"/>
          <source file="..\obj\startup_stm32f4xx.o" lastModified="1585a5db842"/>
          <source file="..\obj\fatfs_usb.o" lastModified="1585a5db8d7"/>
-         <source file="..\obj\main.o" lastModified="1585a6e66a5"/>
+         <source file="..\obj\main.o" lastModified="1586f1f64a4"/>
          <source file="..\obj\stm32f4xx_rcc.o" lastModified="1585a5dba8e"/>
          <source file="..\obj\tm_stm32f4_usart.o" lastModified="1585a5dbb3a"/>
          <source file="..\obj\tm_stm32f4_rotary_encoder.o" lastModified="1585a5dbba9"/>
-         <source file="..\obj\fatfs_sd.o" lastModified="1585a5dbc62"/>
+         <source file="..\obj\fatfs_sd.o" lastModified="1586f115c6d"/>
          <source file="..\obj\usbh_msc_core.o" lastModified="1585a5dbcec"/>
-         <source file="..\obj\bt.o" lastModified="1585a5dbd53"/>
-         <source file="..\obj\gpio.o" lastModified="1585a5dbdbc"/>
-         <source file="..\obj\tm_stm32f4_delay.o" lastModified="1585a5dbe46"/>
+         <source file="..\obj\bt.o" lastModified="1586f115cd7"/>
+         <source file="..\obj\gpio.o" lastModified="1586f115d4a"/>
+         <source file="..\obj\tm_stm32f4_delay.o" lastModified="1586f115de4"/>
          <source file="..\obj\syscall.o" lastModified="1585a5dbe90"/>
          <source file="..\obj\tm_stm32f4_spi.o" lastModified="1585a5dbf15"/>
-         <source file="..\obj\menu.o" lastModified="1585a5dbf84"/>
+         <source file="..\obj\menu.o" lastModified="1586f1a21df"/>
          <source file="..\obj\usbh_core.o" lastModified="1585a5dc01d"/>
          <source file="..\obj\stm32f4xx_gpio.o" lastModified="1585a5dc099"/>
          <source file="..\obj\usbh_msc_scsi.o" lastModified="1585a5dc124"/>
@@ -35,10 +35,10 @@
          <source file="..\obj\DMA.o" lastModified="1585a5dc1fa"/>
          <source file="..\obj\stm32f4xx_dma.o" lastModified="1585a5dc281"/>
          <source file="..\obj\usbh_usr.o" lastModified="1585a5dc310"/>
-         <source file="..\obj\i2s.o" lastModified="1585a5dc376"/>
+         <source file="..\obj\i2s.o" lastModified="1586f115ed2"/>
          <source file="..\obj\usb_bsp.o" lastModified="1585a5dc3ef"/>
          <source file="..\obj\tm_stm32f4_usb_msc_host.o" lastModified="1585a5dc479"/>
-         <source file="..\obj\preamp.o" lastModified="1585a5dc4ec"/>
+         <source file="..\obj\preamp.o" lastModified="1586f115f57"/>
          <source file="..\obj\ff.o" lastModified="1585a5dc66d"/>
          <source file="..\obj\usb_hcd.o" lastModified="1585a5dc6e5"/>
          <source file="..\obj\usbh_msc_bot.o" lastModified="1585a5dc76d"/>
@@ -47,6 +47,7 @@
          <source file="..\obj\stm32f4xx_exti.o" lastModified="1585a5dc907"/>
          <source file="..\obj\usbh_ioreq.o" lastModified="1585a5dc992"/>
          <source file="..\obj\misc.o" lastModified="1585a5dc9fe"/>
+         <source file="..\obj\glcd.o" lastModified="1586f11913e"/>
          <source file="..\obj\tm_stm32f4_gpio.o" lastModified="1585a5dca81"/>
          <source file="..\obj\tm_stm32f4_timer_properties.o" lastModified="1585a5dcaf5"/>
          <source file="..\obj\stm32f4xx_tim.o" lastModified="1585a5dcbf4"/>

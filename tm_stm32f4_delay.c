@@ -21,8 +21,11 @@
 __IO uint32_t TM_TimingDelay = 0;
 __IO uint32_t TM_Time = 0;
 __IO uint32_t TM_Time2 = 0;
+volatile int sys_delay;
 volatile uint32_t mult;
 uint8_t TM_DELAY_Initialized = 0;
+
+uint32_t prescaler = 0;
 
 /* Private structure */
 typedef struct {
@@ -47,37 +50,49 @@ void SysTick_Handler(void) {
 #endif
 	uint8_t i;
 	
-	TM_Time++;
-	if (TM_Time2 != 0x00) {
-		TM_Time2--;
+	prescaler++;
+
+	if (sys_delay!=0)
+	{
+		sys_delay--;
 	}
-	
-	/* Call user function */
-	TM_DELAY_1msHandler();
-	
-	/* Check custom timers */
-	for (i = 0; i < CustomTimers.Count; i++) {
-		/* Check if timer is enabled */
-		if (
-			CustomTimers.Timers[i] &&          /*!< Pointer exists */
-			CustomTimers.Timers[i]->Enabled && /*!< Timer is enabled */
-			CustomTimers.Timers[i]->CNT > 0    /*!< Counter is not NULL */
-		) {
-			/* Decrease counter */
-			CustomTimers.Timers[i]->CNT--;
-			
-			/* Check if count is zero */
-			if (CustomTimers.Timers[i]->CNT == 0) {
-				/* Call user callback function */
-				CustomTimers.Timers[i]->Callback(CustomTimers.Timers[i]->UserParameters);
-				
-				/* Set new counter value */
-				CustomTimers.Timers[i]->CNT = CustomTimers.Timers[i]->ARR;
-				
-				/* Disable timer if auto reload feature is not used */
-				if (!CustomTimers.Timers[i]->AutoReload) {
-					/* Disable counter */
-					CustomTimers.Timers[i]->Enabled = 0;
+
+	if(prescaler == 1000)
+	{
+		prescaler = 0;
+		TM_Time++;
+		if (TM_Time2 != 0x00) {
+			TM_Time2--;
+		}
+
+		/* Call user function */
+		TM_DELAY_1msHandler();
+
+		/* Check custom timers */
+		for (i = 0; i < CustomTimers.Count; i++)
+		{
+			/* Check if timer is enabled */
+			if (
+				CustomTimers.Timers[i] &&          /*!< Pointer exists */
+				CustomTimers.Timers[i]->Enabled && /*!< Timer is enabled */
+				CustomTimers.Timers[i]->CNT > 0    /*!< Counter is not NULL */
+			) {
+				/* Decrease counter */
+				CustomTimers.Timers[i]->CNT--;
+
+				/* Check if count is zero */
+				if (CustomTimers.Timers[i]->CNT == 0) {
+					/* Call user callback function */
+					CustomTimers.Timers[i]->Callback(CustomTimers.Timers[i]->UserParameters);
+
+					/* Set new counter value */
+					CustomTimers.Timers[i]->CNT = CustomTimers.Timers[i]->ARR;
+
+					/* Disable timer if auto reload feature is not used */
+					if (!CustomTimers.Timers[i]->AutoReload) {
+						/* Disable counter */
+						CustomTimers.Timers[i]->Enabled = 0;
+					}
 				}
 			}
 		}
@@ -88,8 +103,8 @@ void TM_DELAY_Init(void) {
 #if defined(TM_DELAY_TIM)
 	TM_DELAY_INT_InitTIM();
 #else
-	/* Set Systick interrupt every 1ms */
-	if (SysTick_Config(SystemCoreClock / 1000)) {
+	/* Set Systick interrupt every 1ms -> changed to 1us */
+	if (SysTick_Config(SystemCoreClock / 1000000)) {
 		/* Capture error */
 		while (1);
 	}

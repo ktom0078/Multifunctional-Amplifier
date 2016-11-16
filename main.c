@@ -18,16 +18,21 @@
 #include "pcm.h"
 #include "tm_stm32f4_usb_msc_host.h"
 #include <stdio.h>
+#include "timer.h"
+#include "glcd.h"
 /* Notes */
 /* - needs to add USB drivers
  * - types.h  -> select.h commented out !! */
 /* - use of 0: and 1: for partionions! */
+
+
 
 int main(void)
 {
 	bool play;
 	FATFS USB_Fs;
 	bool usb_mounted = false;
+
 
 	SystemInit();
 	Gpio_Init();
@@ -37,7 +42,10 @@ int main(void)
 	Cs43Init();
 	TM_DELAY_Init();
 	TM_USB_MSCHOST_Init();
+	TIMER3_Configuration(2000);
+	GLCD_Init();
 
+	GLCD_WriteString("GLCD Test",0,0);
 
     while(1)
     {
