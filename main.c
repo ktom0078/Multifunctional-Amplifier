@@ -26,6 +26,8 @@
 int main(void)
 {
 	bool play;
+	FATFS USB_Fs;
+	bool usb_mounted = false;
 
 	SystemInit();
 	Gpio_Init();
@@ -37,34 +39,42 @@ int main(void)
 	TM_USB_MSCHOST_Init();
 
 
-    if (f_mount(&FatFs, "0:", 1) == FR_OK)
-    {
-    	if(PcmOpenFile("a.raw",partition_sd) == true)
-    	{
-    		play = true;
-    	}
-    	else
-    	{
-        	//Unmount drive, don't forget this!
-            f_mount(0, "0:", 1);
-            play = false;
-    	}
-    }
-
     while(1)
     {
     	TM_USB_MSCHOST_Process();
     	BTBtnsProc();
     	MenuProc();
-    	if(play)
+    	if (TM_USB_MSCHOST_Device() == TM_USB_MSCHOST_Result_Connected)
     	{
-    		if(PcmPlay() == false)
+    		if(usb_mounted == false)
     		{
-    			play = 0;
-    			f_mount(0, "0:", 1);
+    		    if (f_mount(&USB_Fs, "1:", 1) == FR_OK)
+    		    {
+    		    	if(PcmOpenFile("a.raw",partition_usb) == true)
+    		    	{
+    		    		play = true;
+    		    		usb_mounted = true;
+    		    	}
+    		    	else
+    		    	{
+    		        	//Unmount drive, don't forget this!
+    		            f_mount(0, "1:", 1);
+    		            play = false;
+    		    	}
+    		    }
     		}
+    		else
+    		{
+        		if(play)
+            	{
+            		if(PcmPlay() == false)
+            		{
+            			play = 0;
+            			f_mount(0, "1:", 1);
+            		}
+            	}
+			}
     	}
-
     }
 }
 

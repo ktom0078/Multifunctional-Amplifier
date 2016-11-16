@@ -1,0 +1,175 @@
+/**
+*****************************************************************************
+** Kommunikációs mérés - glcd.c
+** A grafikus LCD függvényei
+*****************************************************************************
+*/
+/* Includes ------------------------------------------------------------------*/
+#include "stm32f4xx.h"
+#include "glcd.h"
+#include "font.h"
+#include "gpio.h"
+/* Defines -------------------------------------------------------------------*/
+/* Private variables ---------------------------------------------------------*/
+/* Private functions ---------------------------------------------------------*/
+/* DB0 -> DB1 -> ... -> DB7 */
+GPIO_TypeDef *LCDPort[] = {	GLCD_DB0_PORT,GLCD_DB1_PORT,GLCD_DB2_PORT,GLCD_DB3_PORT,
+							GLCD_DB4_PORT,GLCD_DB5_PORT,GLCD_DB6_PORT,GLCD_DB7_PORT};
+uint16_t LCDPin[] = {	GLCD_DB0_PIN,GLCD_DB1_PIN,GLCD_DB2_PIN,GLCD_DB3_PIN,
+						GLCD_DB4_PIN,GLCD_DB5_PIN,GLCD_DB6_PIN,GLCD_DB7_PIN};
+
+//******************************************************************************************
+// @leírás: Inicializálja a kijelzõt, majd kirajzolja a kezdõképet.
+// 			Nem olvassa a "Busy"-flaget.
+// 			Az idõzítések szoftveres számláló (GLCD_Delay) alapján történik.
+//******************************************************************************************
+void GLCD_Init(void){
+	GPIO_ResetBits(GLCD_E_PORT,GLCD_E_PIN);	//GLCD_E = 0
+	GPIO_SetBits(GLCD_RESET_PORT, GLCD_RESET_PIN);	//GLCD_RESET = 1
+	GLCD_Write(3,0,0x3F); 	//GLCD bekapcsolása
+	GLCD_Write(3,0,0xC0);	//GLCD Start Line
+	GLCD_Clear();			//Kijelzõ törlése
+}
+
+//******************************************************************************************
+// @leírás: Kijelzõ meghajtó kimenetét engedélyezõ függvény
+// @paraméter: newState = ENABLE, #GLCDEN = 0
+//			   newStare = DISABLE, #GLCDEN = 1
+//******************************************************************************************
+void GLCDEN(FunctionalState newState){
+	if(newState){
+		GPIO_ResetBits(GLCD_EN_PIN,GLCD_EN_PIN);
+	}else{
+		GPIO_SetBits(GLCD_EN_PIN,GLCD_EN_PIN);
+	}
+}
+
+//******************************************************************************************
+// @leírás: Beírja a g_data értéket a kiválasztott kijelzõvezérlõbe (cs_s->CS1, CS2)
+// 			utasítás/adat paraméternek megfelelõen.
+// 			Általánosan felhasználható 8bit (adat/utasítás) beírására a kijelzõ vezérlõjébe.
+// @paraméter: cs_s, 1 = CS1, 2 = CS2, 3 = CS1&CS2
+// @paraméter: d_i, 0 = instruction, 1 = data
+//******************************************************************************************
+void GLCD_Write(char cs_s,char d_i,char g_data){
+	uint16_t data = 0x0000;
+	uint32_t i;
+	char bit;
+	switch(cs_s){
+		case 1:
+			GPIO_SetBits(GLCD_CS1_PORT, GLCD_CS1_PIN);	//CS1 = 1
+		break;
+		case 2:
+		 	GPIO_SetBits(GLCD_CS2_PORT, GLCD_CS2_PIN);	//CS2 = 1
+		break;
+		case 3:
+			GPIO_SetBits(GLCD_CS1_PORT, GLCD_CS1_PIN);	//CS1 = 1
+			GPIO_SetBits(GLCD_CS2_PORT, GLCD_CS2_PIN);	//CS2 = 1
+		break;
+	}
+	switch(d_i){
+	case 0:
+		GPIO_ResetBits(GLCD_DI_PORT, GLCD_DI_PIN);	//PD6 = 0 -> Instruction
+		break;
+	case 1:
+		GPIO_SetBits(GLCD_DI_PORT, GLCD_DI_PIN);	//PD6 = 1 -> Data
+		break;
+	}
+	/*  replace with own DB lcd write
+	data = GPIOE->IDR;
+	data &= 0x00FF;
+	data |= g_data << 8;
+	GPIOE->ODR = data;
+	*/
+
+	for(i=0; i<8; i++)
+	{
+		bit = dataToWrite & 1;
+		GPIO_SetBits(LCDPort[i], (bit)?(LCDPin[i]):0);
+		GPIO_ResetBits(LCDPort[i], (1-bit)?(LCDPin[i]):0);
+		dataToWrite >>= 1;
+	}
+
+	GLCD_Delay(1);
+	GPIO_SetBits(GPIOD,GPIO_Pin_7);	//GLCD_E = 1
+	GLCD_Delay(2);
+	GPIO_ResetBits(GPIOD,GPIO_Pin_7);	//GLCD_E = 0
+	GLCD_Delay(4);
+	GPIO_ResetBits(GPIOB, GPIO_Pin_4);	//CS1 = 0
+	GPIO_ResetBits(GPIOB, GPIO_Pin_5);	//CS2 = 0
+}
+//******************************************************************************************
+// @leírás: Közvetlenül törli a kijelzõt.
+// @paraméter: nincs
+//******************************************************************************************
+void GLCD_Clear(void){
+	char x,y;
+	for(x=0;x<8;x++){
+		GLCD_Write(3,0,0x40);
+		GLCD_Write(3,0,(0xB8|x));
+		for(y=0;y<64;y++){
+			GLCD_Write(3,1,0x00);
+	  }//for
+	}//for
+}
+//******************************************************************************************
+// @leírás: A kijelzõ adott sor-oszlop metszetet állítja az m_data értéknek megfelelõen.
+// @paraméter: m_data: adott metszet rajzolata hexába kódolva (lásd.: BitFont.excel
+//			   cX: sor (0-7)
+//			   cY: oszlop (0-127)
+//******************************************************************************************
+void GLCD_Write_Block(char m_data,char cX,char cY){
+	char chip=1;
+	if(cY>=64){
+	chip=2;
+	cY-=64;
+	}
+	GLCD_Write(chip,0,(0x40|cY));
+	GLCD_Write(chip,0,(0xB8|cX));
+	GLCD_Write(chip,1,m_data);
+}
+//******************************************************************************************
+// @leírás: Az átadott stringet kiírja a kijelzõre a font-data alapján.
+// @paraméter: string: tetszõleges szöveg
+//			   X: Kijelzõ egy sorát adja meg (0-7)
+//			   Y: Kijelzõ egy oszlopát választja ki (0-127)
+//******************************************************************************************
+void GLCD_WriteString(const char* string,char Y, char X){
+	char temp = 0;
+	int i=0;
+	while(string[i]!='\0'){
+		temp = string[i];
+		GLCD_Write_Char(temp-32,X,Y+6*i);
+		i++;
+	}
+}
+//******************************************************************************************
+// @leírás: Egy karaktert ír ki a kijelzõre (fontdata-alapján).
+// @paraméter: cPlace: (karakter ASCII-értéke)-32
+//			   cX: kijelzõ egy sorát adja meg
+//			   cY: kijelzõ egy oszlopát adja meg
+//******************************************************************************************
+void GLCD_Write_Char(char cPlace,char cX,char cY){
+	char i=0;
+	char chip=1;
+	if(cY>=64){
+		chip=2;
+		cY-=64;
+	}//if
+	GLCD_Write(chip,0,(0x40|cY));
+	GLCD_Write(chip,0,(0xB8|cX));
+	for (i=0;i<5;i++){
+	  if (cY+i >= 64){
+		  chip=2;
+		  GLCD_Write(chip,0,(0x40|(cY+i-64)));
+		  GLCD_Write(chip,0,(0xB8|cX));
+	  }//if
+	  GLCD_Write(chip,1,fontdata[cPlace*5+i]);
+	  }//for
+}
+//******************************************************************************************
+// @leírás: Kijelzõ írás-késleltetési idõ.
+//******************************************************************************************
+void GLCD_Delay(char value){
+	Sys_DelayUs(value);
+}

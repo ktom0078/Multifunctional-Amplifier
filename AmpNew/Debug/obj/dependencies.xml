@@ -494,7 +494,7 @@
       <source file="..\..\..\timer.h" lastModified="1581bf3c2c0">
          <include file="..\..\..\cmsis_lib\include\stm32f4xx_tim.h"/>
       </source>
-      <source file="..\..\..\main.c" lastModified="1585a42c1fe">
+      <source file="..\..\..\main.c" lastModified="1585a6ccc55">
          <include file="..\..\..\cmsis_lib\include\stm32f4xx_gpio.h"/>
          <include file="..\..\..\cmsis_lib\include\stm32f4xx_rcc.h"/>
          <include file="..\..\..\cmsis_boot\system_stm32f4xx.h"/>
