@@ -3,8 +3,9 @@
    <includePath signature="/I..\..\..\workspace\AmpNew\cmsis_boot /I..\..\..\workspace\AmpNew\fatfs\drivers /I..\..\..\workspace\AmpNew /I..\..\..\workspace\AmpNew\cmsis_lib\include /I..\..\..\workspace /I..\..\..\workspace\AmpNew\fatfs /I..\..\..\workspace\AmpNew\usb_msc_host /I..\..\..\workspace\AmpNew\cmsis_lib /I..\..\.. /I..\..\..\workspace\AmpNew\cmsis">
       <source file="..\..\..\fatfs\ffconf.h" lastModified="15840926100">
       </source>
-      <source file="..\..\..\tm_stm32f4_delay.c" lastModified="1586f0deeaf">
+      <source file="..\..\..\tm_stm32f4_delay.c" lastModified="15873eaab10">
          <include file="..\..\..\tm_stm32f4_delay.h"/>
+         <include file="..\..\..\pcm.h"/>
       </source>
       <source file="..\..\..\glcd.h" lastModified="1352dc120b0">
       </source>
@@ -81,7 +82,7 @@
          <include file="..\..\..\cmsis\core_cmFunc.h"/>
          <include file="..\..\..\cmsis\core_cm4_simd.h"/>
       </source>
-      <source file="..\..\..\dma.h" lastModified="15850354d35">
+      <source file="..\..\..\dma.h" lastModified="15873fc506a">
          <include file="..\..\..\cmsis_lib\include\misc.h"/>
          <include file="..\..\..\cmsis_lib\include\stm32f4xx_dma.h"/>
          <include file="..\..\..\attributes.h"/>
@@ -133,11 +134,11 @@
          <include file="..\..\..\usb_msc_host\usbh_ioreq.h"/>
          <include file="..\..\..\usb_msc_host\usbh_stdreq.h"/>
       </source>
-      <source file="..\..\..\pcm.h" lastModified="1585a3cc2f3">
+      <source file="..\..\..\pcm.h" lastModified="1586f7699a6">
          <include file="..\..\..\tm_stm32f4_fatfs.h"/>
          <include file="..\..\..\attributes.h"/>
       </source>
-      <source file="..\..\..\pcm.c" lastModified="1585a49de11">
+      <source file="..\..\..\pcm.c" lastModified="15873f23376">
          <include file="..\..\..\pcm.h"/>
          <include file="..\..\..\dma.h"/>
          <include file="..\..\..\tm_stm32f4_fatfs.h"/>
@@ -344,6 +345,8 @@
       <source file="..\..\..\fatfs\option\syscall.c" lastModified="14d296b2408">
          <include file="..\..\..\fatfs\ff.h"/>
       </source>
+      <source file="..\..\..\syscalls\syscalls.c" lastModified="1586f2cb7dd">
+      </source>
       <source file="..\..\..\usb_msc_host\usb_regs.h" lastModified="1363b1485f1">
          <include file="..\..\..\usb_msc_host\usb_conf.h"/>
       </source>
@@ -355,6 +358,8 @@
       </source>
       <source file="..\..\..\i2c.h" lastModified="157e2837cf1">
          <include file="..\..\..\cmsis_lib\include\stm32f4xx_i2c.h"/>
+      </source>
+      <source file="..\..\..\stdio\printf.c" lastModified="1586f2cec96">
       </source>
       <source file="..\..\..\tm_stm32f4_gpio.h" lastModified="157ed323542">
          <include file="..\..\..\cmsis_boot\stm32f4xx.h"/>
@@ -498,7 +503,7 @@
          <include file="..\..\..\tm_stm32f4_gpio.h"/>
          <include file="..\..\..\tm_stm32f4_fatfs.h"/>
       </source>
-      <source file="..\..\..\timer.h" lastModified="1586f16b159">
+      <source file="..\..\..\timer.h" lastModified="1586f72f5c1">
          <include file="..\..\..\cmsis_lib\include\stm32f4xx_tim.h"/>
       </source>
       <source file="..\..\..\usb_msc_host\usb_conf.h" lastModified="14823ba8979">
@@ -509,7 +514,7 @@
          <include file="..\..\..\fatfs\diskio.h"/>
          <include file="..\..\..\fatfs\drivers\fatfs_sd.h"/>
       </source>
-      <source file="..\..\..\timer.c" lastModified="1586f1a5237">
+      <source file="..\..\..\timer.c" lastModified="1586f72797d">
          <include file="..\..\..\timer.h"/>
          <include file="..\..\..\cmsis_lib\include\stm32f4xx_rcc.h"/>
          <include file="..\..\..\cmsis_lib\include\misc.h"/>

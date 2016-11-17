@@ -66,3 +66,21 @@ void TIMER3_Configuration(int duty)
 	TIM_Cmd(TIM3, ENABLE);
 }
 
+void Tim4Init(unsigned short int period ) {
+	RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM4, ENABLE);
+
+	TIM_TimeBaseInitTypeDef timerInitStructure;
+	timerInitStructure.TIM_Prescaler = TIM2_PRESCALER_VAL;
+	timerInitStructure.TIM_CounterMode = TIM_CounterMode_Up;
+	timerInitStructure.TIM_Period = period;
+	timerInitStructure.TIM_ClockDivision = TIM_CKD_DIV1;
+	timerInitStructure.TIM_RepetitionCounter = 0;
+	TIM_TimeBaseInit(TIM4, &timerInitStructure);
+
+    NVIC_InitTypeDef nvicStructure;
+    nvicStructure.NVIC_IRQChannel = TIM4_IRQn;
+    nvicStructure.NVIC_IRQChannelPreemptionPriority = 4;
+    nvicStructure.NVIC_IRQChannelSubPriority = 0;
+    nvicStructure.NVIC_IRQChannelCmd = ENABLE;
+    NVIC_Init(&nvicStructure);
+}

@@ -9,6 +9,9 @@ char dma_buff[DMA_AUDIO_BUFFER_SIZE];
 char dma_buff2[DMA_AUDIO_BUFFER_SIZE];
 enum state_enum {init_st,play_st,end_st};
 enum state_enum state = init_st;
+enum act_buff_enum {fb,sb};
+enum act_buff_enum act_buff;
+bool loadneeded = true;
 
 FATFS FatFs;
 FIL fil;
@@ -44,11 +47,9 @@ bool PcmOpenFile(char *filename,TM_FATFS_Partition apartition)
 /* retval: false if playback finished, else true */
 bool PcmPlay()
 {
-	enum act_buff_enum {fb,sb};
-	static enum act_buff_enum act_buff;
+
 	static unsigned int btr;
 	static unsigned int br;
-	static bool loadneeded;
 	bool retval = true;
 
 	if(state == init_st)
@@ -79,20 +80,8 @@ bool PcmPlay()
 				loadneeded = false;
 			}
 
-			if(DmaAudioDone)
-			{
-				DmaAudioDone = false;
-				loadneeded = true;
-				if (act_buff == fb)
-					DMA_Audio_Send(dma_buff, DMA_AUDIO_BUFFER_SIZE / 2);
-				else
-					DMA_Audio_Send(dma_buff2, DMA_AUDIO_BUFFER_SIZE / 2);
-
-				if (act_buff == fb)
-					act_buff = sb;
-				else
-					act_buff = fb;
-			}
+			/* Buffer sending is done in the IT routine */
+			//PcmSendBuffer();
 		}
 		else
 		{
@@ -103,4 +92,23 @@ bool PcmPlay()
 	}
 
 	return retval;
+}
+
+/* Sends the content of the audio buffer when its needed  */
+void PcmSendBuffer()
+{
+	if(DmaAudioDone && loadneeded == false)
+	{
+		DmaAudioDone = false;
+		loadneeded = true;
+		if (act_buff == fb)
+			DMA_Audio_Send(dma_buff, DMA_AUDIO_BUFFER_SIZE / 2);
+		else
+			DMA_Audio_Send(dma_buff2, DMA_AUDIO_BUFFER_SIZE / 2);
+
+		if (act_buff == fb)
+			act_buff = sb;
+		else
+			act_buff = fb;
+	}
 }

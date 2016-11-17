@@ -17,6 +17,7 @@
  * |----------------------------------------------------------------------
  */
 #include "tm_stm32f4_delay.h"
+#include "pcm.h"
 
 __IO uint32_t TM_TimingDelay = 0;
 __IO uint32_t TM_Time = 0;
@@ -51,6 +52,9 @@ void SysTick_Handler(void) {
 	uint8_t i;
 	
 	prescaler++;
+
+	/* Send audio to the DMA if it is needed */
+	PcmSendBuffer();
 
 	if (sys_delay!=0)
 	{

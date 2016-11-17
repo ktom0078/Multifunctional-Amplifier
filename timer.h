@@ -10,6 +10,6 @@ void Tim2Init(unsigned short int period);
 void Tim2Start();
 void Tim2Stop();
 void TIMER3_Configuration(int duty);
-
+void Tim4Init(unsigned short int period);
 
 #endif

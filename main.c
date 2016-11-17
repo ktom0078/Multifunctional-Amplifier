@@ -29,11 +29,13 @@
 
 int main(void)
 {
+	int i;
 	bool play;
 	FATFS USB_Fs;
 	bool usb_mounted = false;
-
-
+	unsigned int redraw = 0;
+	char buff[20];
+	char x = 0;
 	SystemInit();
 	Gpio_Init();
 	PreampInit();
@@ -45,13 +47,26 @@ int main(void)
 	TIMER3_Configuration(2000);
 	GLCD_Init();
 
-	GLCD_WriteString("GLCD Test",0,0);
+
 
     while(1)
     {
     	TM_USB_MSCHOST_Process();
     	BTBtnsProc();
     	MenuProc();
+    	redraw++;
+    	if(redraw % 1000 == 0)
+    	{
+    		memset(buff,0,sizeof(buff));
+    		sprintf(buff,"Asd: %d",x++);
+    		for(i=0;i<8;i++)
+    		{
+        		GLCD_WriteString("         ",0,i);
+        		GLCD_WriteString(buff,0,i);
+    		}
+
+    	}
+
     	if (TM_USB_MSCHOST_Device() == TM_USB_MSCHOST_Result_Connected)
     	{
     		if(usb_mounted == false)
