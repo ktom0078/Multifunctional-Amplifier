@@ -20,96 +20,66 @@
 <part id="7"/>
 <part id="8"/>
 <part id="9"/>
-<part id="10"/>
-<part id="11"/>
-<part id="12"/>
-<part id="13"/>
-<part id="14"/>
-<part id="15"/>
 </presentation>
 </folder>
 </info>
 </editorArea>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" partName="main.c" path="C:/CooCox/CoIDE/workspace/AmpNew/main.c" title="main.c" tooltip="C:/CooCox/CoIDE/workspace/AmpNew/main.c" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/AmpNew/main.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="19" selectionOffset="746" selectionTopPixel="300"/>
-</editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="i2s.c" partName="i2s.c" path="C:/CooCox/CoIDE/workspace/AmpNew/i2s.c" title="i2s.c" tooltip="C:/CooCox/CoIDE/workspace/AmpNew/i2s.c" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/AmpNew/i2s.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="8" selectionOffset="1191" selectionTopPixel="3"/>
-</editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="i2c.c" partName="i2c.c" path="C:/CooCox/CoIDE/workspace/AmpNew/i2c.c" title="i2c.c" tooltip="C:/CooCox/CoIDE/workspace/AmpNew/i2c.c" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/AmpNew/i2c.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="597"/>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="pcm.c" partName="pcm.c" path="C:/CooCox/CoIDE/workspace/AmpNew/pcm.c" title="pcm.c" tooltip="C:/CooCox/CoIDE/workspace/AmpNew/pcm.c" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/AmpNew/pcm.c"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1424" selectionTopPixel="450"/>
 </editor>
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="pcm.h" partName="pcm.h" path="C:/CooCox/CoIDE/workspace/AmpNew/pcm.h" title="pcm.h" tooltip="C:/CooCox/CoIDE/workspace/AmpNew/pcm.h" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/AmpNew/pcm.h"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="136" selectionTopPixel="0"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="133" selectionTopPixel="0"/>
 </editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="i2s.h" partName="i2s.h" path="C:/CooCox/CoIDE/workspace/AmpNew/i2s.h" title="i2s.h" tooltip="C:/CooCox/CoIDE/workspace/AmpNew/i2s.h" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/AmpNew/i2s.h"/>
-<editorState selectionHorizontalPixel="0" selectionLength="30" selectionOffset="0" selectionTopPixel="0"/>
-</editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="menu.h" partName="menu.h" path="C:/CooCox/CoIDE/workspace/AmpNew/menu.h" title="menu.h" tooltip="C:/CooCox/CoIDE/workspace/AmpNew/menu.h" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/AmpNew/menu.h"/>
-<editorState selectionHorizontalPixel="0" selectionLength="12" selectionOffset="346" selectionTopPixel="80"/>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" partName="main.c" path="C:/CooCox/CoIDE/workspace/AmpNew/main.c" title="main.c" tooltip="C:/CooCox/CoIDE/workspace/AmpNew/main.c" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/AmpNew/main.c"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="756" selectionTopPixel="476"/>
 </editor>
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="startup_stm32f4xx.c" partName="startup_stm32f4xx.c" path="C:/CooCox/CoIDE/workspace/AmpNew/cmsis_boot/startup/startup_stm32f4xx.c" title="startup_stm32f4xx.c" tooltip="C:/CooCox/CoIDE/workspace/AmpNew/cmsis_boot/startup/startup_stm32f4xx.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/AmpNew/cmsis_boot/startup/startup_stm32f4xx.c"/>
 <editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="14795" selectionTopPixel="4403"/>
 </editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f4xx_spi.c" partName="stm32f4xx_spi.c" path="C:/CooCox/CoIDE/workspace/AmpNew/cmsis_lib/source/stm32f4xx_spi.c" title="stm32f4xx_spi.c" tooltip="C:/CooCox/CoIDE/workspace/AmpNew/cmsis_lib/source/stm32f4xx_spi.c" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/AmpNew/cmsis_lib/source/stm32f4xx_spi.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="14" selectionOffset="39697" selectionTopPixel="16498"/>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="mp3.c" partName="mp3.c" path="C:/CooCox/CoIDE/workspace/AmpNew/mp3.c" title="mp3.c" tooltip="C:/CooCox/CoIDE/workspace/AmpNew/mp3.c" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/AmpNew/mp3.c"/>
+<editorState selectionHorizontalPixel="0" selectionLength="11" selectionOffset="404" selectionTopPixel="0"/>
 </editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="preamp.c" partName="preamp.c" path="C:/CooCox/CoIDE/workspace/AmpNew/preamp.c" title="preamp.c" tooltip="C:/CooCox/CoIDE/workspace/AmpNew/preamp.c" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/AmpNew/preamp.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="18" selectionOffset="378" selectionTopPixel="0"/>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="mp3.h" partName="mp3.h" path="C:/CooCox/CoIDE/workspace/AmpNew/mp3.h" title="mp3.h" tooltip="C:/CooCox/CoIDE/workspace/AmpNew/mp3.h" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/AmpNew/mp3.h"/>
+<editorState selectionHorizontalPixel="0" selectionLength="6" selectionOffset="44" selectionTopPixel="0"/>
 </editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="preamp.h" partName="preamp.h" path="C:/CooCox/CoIDE/workspace/AmpNew/preamp.h" title="preamp.h" tooltip="C:/CooCox/CoIDE/workspace/AmpNew/preamp.h" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/AmpNew/preamp.h"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="464" selectionTopPixel="357"/>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="huffman.c" partName="huffman.c" path="C:/CooCox/CoIDE/workspace/AmpNew/helix/real/huffman.c" title="huffman.c" tooltip="C:/CooCox/CoIDE/workspace/AmpNew/helix/real/huffman.c" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/AmpNew/helix/real/huffman.c"/>
+<editorState selectionHorizontalPixel="0" selectionLength="3" selectionOffset="14292" selectionTopPixel="7196"/>
 </editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="pcm.c" partName="pcm.c" path="C:/CooCox/CoIDE/workspace/AmpNew/pcm.c" title="pcm.c" tooltip="C:/CooCox/CoIDE/workspace/AmpNew/pcm.c" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/AmpNew/pcm.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="197" selectionTopPixel="270"/>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="subband.c" partName="subband.c" path="C:/CooCox/CoIDE/workspace/AmpNew/helix/real/subband.c" title="subband.c" tooltip="C:/CooCox/CoIDE/workspace/AmpNew/helix/real/subband.c" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/AmpNew/helix/real/subband.c"/>
+<editorState selectionHorizontalPixel="0" selectionLength="18" selectionOffset="2778" selectionTopPixel="905"/>
 </editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="fatfs_usb.c" partName="fatfs_usb.c" path="C:/CooCox/CoIDE/workspace/AmpNew/fatfs/drivers/fatfs_usb.c" title="fatfs_usb.c" tooltip="C:/CooCox/CoIDE/workspace/AmpNew/fatfs/drivers/fatfs_usb.c" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/AmpNew/fatfs/drivers/fatfs_usb.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="895" selectionTopPixel="210"/>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="platform.h" partName="platform.h" path="C:/CooCox/CoIDE/workspace/AmpNew/helix/platform.h" title="platform.h" tooltip="C:/CooCox/CoIDE/workspace/AmpNew/helix/platform.h" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/AmpNew/helix/platform.h"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="0"/>
 </editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="defines.h" partName="defines.h" path="C:/CooCox/CoIDE/workspace/AmpNew/defines.h" title="defines.h" tooltip="C:/CooCox/CoIDE/workspace/AmpNew/defines.h" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/AmpNew/defines.h"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1219" selectionTopPixel="216"/>
-</editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="usbh_core.c" partName="usbh_core.c" path="C:/CooCox/CoIDE/workspace/AmpNew/usb_msc_host/usbh_core.c" title="usbh_core.c" tooltip="C:/CooCox/CoIDE/workspace/AmpNew/usb_msc_host/usbh_core.c" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/AmpNew/usb_msc_host/usbh_core.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="16" selectionOffset="3947" selectionTopPixel="2499"/>
-</editor>
-<editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="usb_bsp.c" partName="usb_bsp.c" path="C:/CooCox/CoIDE/workspace/AmpNew/usb_msc_host/usb_bsp.c" title="usb_bsp.c" tooltip="C:/CooCox/CoIDE/workspace/AmpNew/usb_msc_host/usb_bsp.c" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/AmpNew/usb_msc_host/usb_bsp.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="6890" selectionTopPixel="3332"/>
-</editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="tm_stm32f4_usb_msc_host.h" partName="tm_stm32f4_usb_msc_host.h" path="C:/CooCox/CoIDE/workspace/AmpNew/tm_stm32f4_usb_msc_host.h" title="tm_stm32f4_usb_msc_host.h" tooltip="C:/CooCox/CoIDE/workspace/AmpNew/tm_stm32f4_usb_msc_host.h" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/AmpNew/tm_stm32f4_usb_msc_host.h"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="4535" selectionTopPixel="2130"/>
+<editor activePart="true" focus="true" id="org.coocox.builder.ui.editors.ConfigEditor" name="" partName="Configuration" title="Configuration" tooltip="" workbook="DefaultEditorWorkbook">
+<input factoryID="org.coocox.builder.ui.persistent.PersistentElementFactory">
+<org.coocox.builder.ui.editors.ConfigEditor horizontalPosition="0" subTagIndex="1" verticalPosition="0"/>
+</input>
 </editor>
 </editors>
 <views>
 <view id="org.eclipse.debug.ui.ExpressionView" partName="Expressions">
 <viewState>
-<ExpressionKeySet ExpKeys="buff,TM_UART4,u,MenuAudioSettings,vol,SystemCoreClock,br,dma_buff,DMA_IT,"/>
+<ExpressionKeySet ExpKeys="DmaAudioDone,loadneeded,err,"/>
 </viewState>
 </view>
 <view id="org.coocox.builder.ui.views.ProjectView" partName="Project">
-<viewState CommonNavigator.LINKING_ENABLED="0" horizontalPosition="0" org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets="0" verticalPosition="66">
+<viewState CommonNavigator.LINKING_ENABLED="0" horizontalPosition="0" org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets="0" verticalPosition="4">
 <expanded>
 <element path="/AmpNew"/>
-<element path="/AmpNew/fatfs"/>
-<element path="/AmpNew/usb_msc_host"/>
+<element path="/AmpNew/helix"/>
 </expanded>
 <selection>
-<element path="/AmpNew/tm_stm32f4_usb_msc_host.h"/>
+<element path="/AmpNew/helix/platform.h"/>
 </selection>
 </viewState>
 </view>
@@ -149,7 +119,7 @@
 <viewState/>
 </view>
 </views>
-<perspectives activePart="org.eclipse.cdt.ui.editor.CEditor" activePerspective="org.coocox.builder.perspective.CoBuilder">
+<perspectives activePart="org.coocox.builder.ui.editors.ConfigEditor" activePerspective="org.coocox.builder.perspective.CoBuilder">
 <perspective editorAreaTrimState="2" editorAreaVisible="1" fixed="0" version="0.016">
 <descriptor class="org.coocox.builder.ui.PerspectiveCoBuilder" id="org.coocox.builder.perspective.CoBuilder" label="CooCox CoBuilder"/>
 <alwaysOnActionSet id="org.coocox.component.ui.actionSet"/>
@@ -281,8 +251,8 @@
 <hide_toolbar_item_id id="org.eclipse.ui.edit.text.toggleShowSelectedElementOnly"/>
 <hide_toolbar_item_id id="org.coocox.builder.ui.build"/>
 <hide_toolbar_item_id id="org.coocox.welcome.ui.action.welcome"/>
-<hide_toolbar_item_id id="org.coocox.codebugger.configuration.coideProgramDownloadAction"/>
 <hide_toolbar_item_id id="org.coocox.component.ui.ShowRepositoryAction"/>
+<hide_toolbar_item_id id="org.coocox.codebugger.configuration.coideProgramDownloadAction"/>
 <view id="org.eclipse.ui.console.ConsoleView"/>
 <view id="org.eclipse.debug.ui.DebugView"/>
 <view id="org.coocox.codebugger.trace.ui.traceview"/>
@@ -310,7 +280,7 @@
 </folder>
 </info>
 <info folder="true" part="org.eclipse.ui.internal.ViewStack@1c42278" ratio="0.69953054" ratioLeft="447" ratioRight="192" relationship="4" relative="org.eclipse.ui.internal.ViewStack@1231023">
-<folder activePageID="org.eclipse.ui.console.ConsoleView" appearance="2" expanded="2">
+<folder activePageID="org.eclipse.debug.ui.DebugView" appearance="2" expanded="2">
 <page content="org.eclipse.ui.console.ConsoleView" label="Console"/>
 <page content="org.eclipse.debug.ui.DebugView" label="Debug"/>
 <page content="org.eclipse.debug.ui.BreakpointView" label="LabelNotFound"/>
@@ -347,7 +317,7 @@
 </presentation>
 </folder>
 </info>
-<info part="org.eclipse.ui.editorss" ratio="0.29960707" ratioLeft="305" ratioRight="713" relationship="2" relative="org.eclipse.ui.internal.ViewStack@1231023"/>
+<info part="org.eclipse.ui.editorss" ratio="0.3013834" ratioLeft="305" ratioRight="707" relationship="2" relative="org.eclipse.ui.internal.ViewStack@1231023"/>
 </mainWindow>
 </layout>
 </perspective>
@@ -355,166 +325,166 @@
 <workingSets/>
 <navigationHistory>
 <editors>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/AmpNew/tm_stm32f4_usb_msc_host.c"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/AmpNew/usb_msc_host/usb_conf.h"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/AmpNew/usb_msc_host/usb_bsp.c"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/AmpNew/usb_msc_host/usb_bsp.h"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/AmpNew/usb_msc_host/usb_core.c"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/AmpNew/fatfs/drivers/fatfs_usb.c"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/AmpNew/tm_stm32f4_usb_msc_host.h"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/AmpNew/usb_msc_host/usbh_core.c"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/AmpNew/defines.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/AmpNew/mp3.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/AmpNew/main.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/AmpNew/helix/mp3dec.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/AmpNew/helix/pub/mp3dec.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/AmpNew/pcm.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/AmpNew/pcm.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/AmpNew/usb_msc_host/usbh_msc_core.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/AmpNew/helix/platform.h"/>
+<editor factoryID="org.coocox.builder.ui.persistent.PersistentElementFactory" id="org.coocox.builder.ui.editors.ConfigEditor">
+<org.coocox.builder.ui.editors.ConfigEditor horizontalPosition="0" subTagIndex="1" verticalPosition="0"/>
+</editor>
 </editors>
-<item historyLabel="usb_bsp.h" index="3">
+<item historyLabel="main.c" index="1">
+<position info="not_deleted" x="756" y="0"/>
+</item>
+<item historyLabel="mp3.c" index="0">
+<position info="not_deleted" x="3117" y="0"/>
+</item>
+<item historyLabel="mp3.c" index="0">
+<position info="not_deleted" x="2662" y="0"/>
+</item>
+<item historyLabel="mp3.c" index="0">
+<position info="not_deleted" x="3117" y="0"/>
+</item>
+<item historyLabel="mp3.c" index="0">
+<position info="not_deleted" x="2662" y="0"/>
+</item>
+<item historyLabel="mp3.c" index="0">
+<position info="not_deleted" x="3117" y="0"/>
+</item>
+<item historyLabel="mp3.c" index="0">
+<position info="not_deleted" x="2662" y="0"/>
+</item>
+<item historyLabel="mp3.c" index="0">
+<position info="not_deleted" x="3117" y="0"/>
+</item>
+<item historyLabel="mp3.c" index="0">
+<position info="not_deleted" x="2662" y="0"/>
+</item>
+<item historyLabel="mp3.c" index="0">
+<position info="not_deleted" x="2810" y="9"/>
+</item>
+<item historyLabel="mp3dec.c" index="2">
 <position/>
 </item>
-<item historyLabel="usb_bsp.c" index="2">
-<position info="not_deleted" x="5482" y="17"/>
+<item historyLabel="mp3.c" index="0">
+<position info="not_deleted" x="2810" y="9"/>
 </item>
-<item historyLabel="usb_bsp.h" index="3">
+<item historyLabel="mp3dec.h" index="3">
 <position/>
 </item>
-<item historyLabel="usb_bsp.c" index="2">
-<position info="not_deleted" x="6049" y="17"/>
+<item historyLabel="mp3.c" index="0">
+<position info="not_deleted" x="2810" y="9"/>
 </item>
-<item historyLabel="usb_bsp.h" index="3">
+<item historyLabel="mp3.c" index="0">
+<position info="not_deleted" x="2810" y="9"/>
+</item>
+<item historyLabel="mp3dec.c" index="2">
+<position info="not_deleted" x="10757" y="9"/>
+</item>
+<item historyLabel="mp3.c" index="0">
+<position info="not_deleted" x="2810" y="9"/>
+</item>
+<item historyLabel="mp3dec.h" index="3">
 <position/>
 </item>
-<item historyLabel="usb_bsp.c" index="2">
-<position info="not_deleted" x="6408" y="17"/>
+<item historyLabel="mp3.c" index="0">
+<position info="not_deleted" x="1493" y="0"/>
 </item>
-<item historyLabel="usb_bsp.h" index="3">
-<position/>
+<item historyLabel="pcm.c" index="4">
+<position info="not_deleted" x="1142" y="59"/>
 </item>
-<item historyLabel="usb_bsp.c" index="2">
-<position info="not_deleted" x="6049" y="17"/>
+<item historyLabel="main.c" index="1">
+<position info="not_deleted" x="756" y="0"/>
 </item>
-<item historyLabel="usb_bsp.h" index="3">
-<position/>
+<item historyLabel="mp3.c" index="0">
+<position info="not_deleted" x="1405" y="8"/>
 </item>
-<item historyLabel="usb_bsp.c" index="2">
-<position info="not_deleted" x="6049" y="17"/>
+<item historyLabel="pcm.h" index="5">
+<position info="not_deleted" x="133" y="0"/>
 </item>
-<item historyLabel="usb_bsp.h" index="3">
-<position info="not_deleted" x="417" y="17"/>
+<item historyLabel="pcm.c" index="4">
+<position info="not_deleted" x="151" y="77"/>
 </item>
-<item historyLabel="usb_conf.h" index="1">
-<position info="not_deleted" x="7915" y="52"/>
+<item historyLabel="mp3.c" index="0">
+<position info="not_deleted" x="1409" y="0"/>
 </item>
-<item historyLabel="usb_bsp.c" index="2">
-<position info="not_deleted" x="7039" y="3"/>
+<item historyLabel="pcm.h" index="5">
+<position info="not_deleted" x="133" y="0"/>
 </item>
-<item historyLabel="usb_bsp.c" index="2">
-<position info="not_deleted" x="7023" y="12"/>
+<item historyLabel="pcm.c" index="4">
+<position info="not_deleted" x="1099" y="21"/>
 </item>
-<item historyLabel="usb_bsp.c" index="2">
-<position info="not_deleted" x="2591" y="0"/>
+<item historyLabel="mp3.c" index="0">
+<position info="not_deleted" x="1307" y="0"/>
 </item>
-<item historyLabel="usb_conf.h" index="1">
-<position info="not_deleted" x="6075" y="12"/>
+<item historyLabel="pcm.c" index="4">
+<position info="not_deleted" x="1965" y="52"/>
 </item>
-<item historyLabel="usb_core.c" index="4">
-<position info="not_deleted" x="2469" y="12"/>
+<item historyLabel="mp3.c" index="0">
+<position info="not_deleted" x="1873" y="0"/>
 </item>
-<item historyLabel="usb_core.c" index="4">
-<position info="not_deleted" x="11155" y="12"/>
+<item historyLabel="pcm.c" index="4">
+<position info="not_deleted" x="1430" y="110"/>
 </item>
-<item historyLabel="usb_core.c" index="4">
-<position info="not_deleted" x="16206" y="12"/>
+<item historyLabel="mp3.c" index="0">
+<position info="not_deleted" x="1873" y="0"/>
 </item>
-<item historyLabel="usb_core.c" index="4">
-<position info="not_deleted" x="16380" y="12"/>
+<item historyLabel="pcm.h" index="5">
+<position info="not_deleted" x="133" y="0"/>
 </item>
-<item historyLabel="usb_core.c" index="4">
-<position info="not_deleted" x="18220" y="12"/>
+<item historyLabel="pcm.c" index="4">
+<position info="not_deleted" x="1424" y="0"/>
 </item>
-<item historyLabel="usb_core.c" index="4">
-<position info="not_deleted" x="18793" y="20"/>
+<item historyLabel="mp3.c" index="0">
+<position info="not_deleted" x="1873" y="0"/>
 </item>
-<item historyLabel="usb_conf.h" index="1">
-<position info="not_deleted" x="6075" y="12"/>
+<item historyLabel="main.c" index="1">
+<position info="not_deleted" x="1646" y="0"/>
 </item>
-<item historyLabel="usb_bsp.c" index="2">
-<position info="not_deleted" x="7023" y="12"/>
+<item historyLabel="mp3.c" index="0">
+<position info="not_deleted" x="1873" y="0"/>
 </item>
-<item historyLabel="fatfs_usb.c" index="5">
-<position info="not_deleted" x="895" y="0"/>
+<item historyLabel="main.c" index="1">
+<position info="not_deleted" x="756" y="0"/>
 </item>
-<item historyLabel="usb_bsp.c" index="2">
-<position info="not_deleted" x="7039" y="3"/>
+<item historyLabel="mp3.c" index="0">
+<position info="not_deleted" x="1873" y="0"/>
 </item>
-<item historyLabel="tm_stm32f4_usb_msc_host.c" index="0">
-<position info="not_deleted" x="967" y="16"/>
+<item historyLabel="mp3.c" index="0">
+<position info="not_deleted" x="3117" y="0"/>
 </item>
-<item historyLabel="usb_bsp.c" index="2">
-<position info="not_deleted" x="7039" y="3"/>
+<item historyLabel="mp3.c" index="0">
+<position info="not_deleted" x="3846" y="0"/>
 </item>
-<item historyLabel="usb_bsp.c" index="2">
-<position info="not_deleted" x="7023" y="12"/>
+<item historyLabel="usbh_msc_core.c" index="6">
+<position info="not_deleted" x="8708" y="0"/>
 </item>
-<item historyLabel="usb_bsp.c" index="2">
-<position/>
+<item historyLabel="mp3.c" index="0">
+<position info="not_deleted" x="3117" y="0"/>
 </item>
-<item historyLabel="usb_bsp.c" index="2">
-<position info="not_deleted" x="7039" y="3"/>
+<item historyLabel="main.c" index="1">
+<position info="not_deleted" x="756" y="0"/>
 </item>
-<item historyLabel="tm_stm32f4_usb_msc_host.h" index="6">
-<position/>
+<item historyLabel="mp3.c" index="0">
+<position info="not_deleted" x="3117" y="0"/>
 </item>
-<item historyLabel="usb_bsp.c" index="2">
-<position info="not_deleted" x="7039" y="3"/>
+<item historyLabel="mp3.c" index="0">
+<position info="not_deleted" x="404" y="11"/>
 </item>
-<item historyLabel="tm_stm32f4_usb_msc_host.c" index="0">
-<position info="not_deleted" x="888" y="23"/>
+<item historyLabel="mp3dec.h" index="3">
+<position info="not_deleted" x="4402" y="0"/>
 </item>
-<item historyLabel="tm_stm32f4_usb_msc_host.h" index="6">
-<position info="not_deleted" x="4585" y="0"/>
+<item historyLabel="mp3.c" index="0">
+<position info="not_deleted" x="404" y="11"/>
 </item>
-<item historyLabel="tm_stm32f4_usb_msc_host.c" index="0">
-<position info="not_deleted" x="878" y="36"/>
+<item historyLabel="platform.h" index="7">
+<position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="usb_bsp.h" index="3">
-<position info="not_deleted" x="417" y="17"/>
-</item>
-<item historyLabel="tm_stm32f4_usb_msc_host.c" index="0">
-<position info="not_deleted" x="878" y="36"/>
-</item>
-<item historyLabel="usb_bsp.c" index="2">
-<position info="not_deleted" x="1851" y="0"/>
-</item>
-<item historyLabel="tm_stm32f4_usb_msc_host.c" index="0">
-<position info="not_deleted" x="1010" y="8"/>
-</item>
-<item historyLabel="usb_bsp.c" index="2">
-<position info="not_deleted" x="1851" y="0"/>
-</item>
-<item historyLabel="usb_bsp.c" index="2">
-<position info="not_deleted" x="6904" y="14"/>
-</item>
-<item historyLabel="usb_conf.h" index="1">
-<position info="not_deleted" x="2233" y="14"/>
-</item>
-<item historyLabel="usb_bsp.c" index="2">
-<position info="not_deleted" x="1794" y="12"/>
-</item>
-<item historyLabel="usbh_core.c" index="7">
-<position info="not_deleted" x="3947" y="16"/>
-</item>
-<item historyLabel="defines.h" index="8">
-<position info="not_deleted" x="1219" y="0"/>
-</item>
-<item historyLabel="fatfs_usb.c" index="5">
-<position info="not_deleted" x="895" y="0"/>
-</item>
-<item historyLabel="usbh_core.c" index="7">
-<position info="not_deleted" x="3947" y="16"/>
-</item>
-<item historyLabel="tm_stm32f4_usb_msc_host.h" index="6">
-<position info="not_deleted" x="4535" y="0"/>
-</item>
-<item active="true" historyLabel="usb_bsp.c" index="2">
-<position info="not_deleted" x="7000" y="39"/>
-</item>
+<item active="true" historyLabel="Configuration" index="8"/>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
 </page>
@@ -522,52 +492,49 @@
 <actionBarAdvisor/>
 </window>
 <mruList>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="tm_stm32f4_usb_msc_host.h" tooltip="AmpNew/tm_stm32f4_usb_msc_host.h">
-<persistable path="/AmpNew/tm_stm32f4_usb_msc_host.h"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="usb_core.c" tooltip="AmpNew/usb_msc_host/usb_core.c">
-<persistable path="/AmpNew/usb_msc_host/usb_core.c"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="usb_conf.h" tooltip="AmpNew/usb_msc_host/usb_conf.h">
-<persistable path="/AmpNew/usb_msc_host/usb_conf.h"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="usb_bsp.h" tooltip="AmpNew/usb_msc_host/usb_bsp.h">
-<persistable path="/AmpNew/usb_msc_host/usb_bsp.h"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="usb_bsp.c" tooltip="AmpNew/usb_msc_host/usb_bsp.c">
-<persistable path="/AmpNew/usb_msc_host/usb_bsp.c"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="usbh_core.c" tooltip="AmpNew/usb_msc_host/usbh_core.c">
-<persistable path="/AmpNew/usb_msc_host/usbh_core.c"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="tm_stm32f4_usb_msc_host.c" tooltip="AmpNew/tm_stm32f4_usb_msc_host.c">
-<persistable path="/AmpNew/tm_stm32f4_usb_msc_host.c"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="usbh_usr.h" tooltip="AmpNew/usb_msc_host/usbh_usr.h">
-<persistable path="/AmpNew/usb_msc_host/usbh_usr.h"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="usbh_msc_core.h" tooltip="AmpNew/usb_msc_host/usbh_msc_core.h">
-<persistable path="/AmpNew/usb_msc_host/usbh_msc_core.h"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="usbh_ioreq.h" tooltip="AmpNew/usb_msc_host/usbh_ioreq.h">
-<persistable path="/AmpNew/usb_msc_host/usbh_ioreq.h"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="usbh_def.h" tooltip="AmpNew/usb_msc_host/usbh_def.h">
-<persistable path="/AmpNew/usb_msc_host/usbh_def.h"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="usbh_conf.h" tooltip="AmpNew/usb_msc_host/usbh_conf.h">
-<persistable path="/AmpNew/usb_msc_host/usbh_conf.h"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="usb_defines.h" tooltip="AmpNew/usb_msc_host/usb_defines.h">
-<persistable path="/AmpNew/usb_msc_host/usb_defines.h"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="defines.h" tooltip="AmpNew/defines.h">
-<persistable path="/AmpNew/defines.h"/>
-</file>
-<file factoryID="org.coocox.component.ui.editors.repository.RepositoryElementFactory" id="org.coocox.builder.ui.editors.repository.RepositoryBrowser" name="Repository" tooltip="Repository">
+<file factoryID="org.coocox.builder.ui.persistent.PersistentElementFactory" id="org.coocox.builder.ui.editors.ConfigEditor" name="" tooltip="">
 <persistable>
-<subPage/>
+<org.coocox.builder.ui.editors.ConfigEditor horizontalPosition="0" subTagIndex="1" verticalPosition="0"/>
 </persistable>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="platform.h" tooltip="AmpNew/helix/platform.h">
+<persistable path="/AmpNew/helix/platform.h"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="mp3dec.h" tooltip="AmpNew/helix/pub/mp3dec.h">
+<persistable path="/AmpNew/helix/pub/mp3dec.h"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="usbh_msc_core.c" tooltip="AmpNew/usb_msc_host/usbh_msc_core.c">
+<persistable path="/AmpNew/usb_msc_host/usbh_msc_core.c"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="mp3dec.c" tooltip="AmpNew/helix/mp3dec.c">
+<persistable path="/AmpNew/helix/mp3dec.c"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="subband.c" tooltip="AmpNew/helix/real/subband.c">
+<persistable path="/AmpNew/helix/real/subband.c"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="huffman.c" tooltip="AmpNew/helix/real/huffman.c">
+<persistable path="/AmpNew/helix/real/huffman.c"/>
+</file>
+<file factoryID="org.eclipse.cdt.ui.ExternalEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="string.h" tooltip="C:\Program Files (x86)\GNU Tools ARM Embedded\5.4 2016q3\arm-none-eabi\include\string.h">
+<persistable path="C:\Program Files (x86)\GNU Tools ARM Embedded\5.4 2016q3\arm-none-eabi\include\string.h" project="AmpNew"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="mp3tabs.c" tooltip="AmpNew/helix/mp3tabs.c">
+<persistable path="/AmpNew/helix/mp3tabs.c"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="assembly.h" tooltip="AmpNew/helix/real/assembly.h">
+<persistable path="/AmpNew/helix/real/assembly.h"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="mp3.h" tooltip="AmpNew/mp3.h">
+<persistable path="/AmpNew/mp3.h"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="mp3.c" tooltip="AmpNew/mp3.c">
+<persistable path="/AmpNew/mp3.c"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="dma.c" tooltip="AmpNew/dma.c">
+<persistable path="/AmpNew/dma.c"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="startup_stm32f4xx.c" tooltip="AmpNew/cmsis_boot/startup/startup_stm32f4xx.c">
+<persistable path="/AmpNew/cmsis_boot/startup/startup_stm32f4xx.c"/>
 </file>
 </mruList>
 </workbench>

@@ -5,6 +5,8 @@
 #include <stdio.h>
 #include <string.h>
 
+#ifdef PCM_ENABLED
+
 char dma_buff[DMA_AUDIO_BUFFER_SIZE];
 char dma_buff2[DMA_AUDIO_BUFFER_SIZE];
 enum state_enum {init_st,play_st,end_st};
@@ -112,3 +114,5 @@ void PcmSendBuffer()
 			act_buff = fb;
 	}
 }
+
+#endif

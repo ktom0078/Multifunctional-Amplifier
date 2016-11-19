@@ -59,9 +59,9 @@ void DMA1_Stream7_IRQHandler()
 		DMA_ClearITPendingBit(DMA_AUDIO_STREAM, DMA_FLAG_HTIF7);
 		DMA_ClearFlag(DMA_AUDIO_STREAM, DMA_FLAG_HTIF7);
 	}
-	else if (DMA_GetITStatus(DMA_AUDIO_STREAM, DMA_FLAG_TEIF7))
+	/*else if (DMA_GetITStatus(DMA_AUDIO_STREAM, DMA_FLAG_TEIF7))
 	{
 		DmaAudioDone = false;
-	}
+	}*/
 }
 

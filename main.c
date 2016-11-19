@@ -20,6 +20,7 @@
 #include <stdio.h>
 #include "timer.h"
 #include "glcd.h"
+#include "mp3.h"
 /* Notes */
 /* - needs to add USB drivers
  * - types.h  -> select.h commented out !! */
@@ -55,6 +56,7 @@ int main(void)
     	BTBtnsProc();
     	MenuProc();
     	redraw++;
+
     	if(redraw % 1000 == 0)
     	{
     		memset(buff,0,sizeof(buff));
@@ -73,7 +75,7 @@ int main(void)
     		{
     		    if (f_mount(&USB_Fs, "1:", 1) == FR_OK)
     		    {
-    		    	if(PcmOpenFile("a.raw",partition_usb) == true)
+    		    	if(Mp3OpenFile("a.mp3",partition_usb) == true)
     		    	{
     		    		play = true;
     		    		usb_mounted = true;
@@ -90,7 +92,7 @@ int main(void)
     		{
         		if(play)
             	{
-            		if(PcmPlay() == false)
+            		if(Mp3Play() == false)
             		{
             			play = 0;
             			f_mount(0, "1:", 1);
