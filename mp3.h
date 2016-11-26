@@ -24,9 +24,10 @@ typedef enum  {
 extern Mp3_Status_e Mp3_Status;
 extern FIL fil;
 
-bool Mp3Play();
+bool Mp3Play(char *filename,TM_FATFS_Partition apartition);
 bool Mp3OpenFile(char *filename,TM_FATFS_Partition apartition);
 void MP3_Debug(int err);
 void Mp3SendBuffer();
+unsigned char Mp3MountDevices();
 
 #endif

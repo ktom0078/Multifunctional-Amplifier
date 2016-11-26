@@ -19,6 +19,7 @@
 #include "tm_stm32f4_delay.h"
 #include "pcm.h"
 #include "mp3.h"
+#include "tm_stm32f4_usb_msc_host.h"
 
 __IO uint32_t TM_TimingDelay = 0;
 __IO uint32_t TM_Time = 0;

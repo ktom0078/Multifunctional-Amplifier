@@ -2,6 +2,7 @@
 #include "gpio.h"
 #include <stdio.h>
 #include "menu.h"
+#include "tm_stm32f4_usb_msc_host.h"
 
 
 short int mp3_buffer[MP3_BUFF_SIZE];
@@ -16,6 +17,8 @@ MP3FrameInfo mp3FrameInfo;
 HMP3Decoder hMP3Decoder;
 
 FIL fil;
+FATFS USB_Fs;
+FATFS SD_Fs;
 
 
 Mp3_Status_e Mp3_Status = st_end;
@@ -44,13 +47,12 @@ bool Mp3OpenFile(char *filename,TM_FATFS_Partition apartition)
 	if (f_open(&fil, fullname, FA_READ ) == FR_OK)
 	{
 		retval = true;
-		Mp3_Status = st_init;
 	}
 
 	return retval;
 }
 
-bool Mp3Play() {
+bool Mp3Play(char *filename,TM_FATFS_Partition apartition) {
 	int offset, err;
 
 	unsigned int h;
@@ -66,24 +68,28 @@ bool Mp3Play() {
 	switch(Mp3_Status)
 	{
 	case st_init:
-		act_buff = fb;
-		btr = AUDIO_BUFF_SIZE;
-		br = btr + 1;
-		DMA_Audio_Init_Single(mp3_buffer, MP3_BUFF_SIZE);
-		loadneeded = true;
-		Mp3_Status = st_play;
-		hMP3Decoder = MP3InitDecoder();
-		read_ptr = audio_buffer;
-		bytes_left = AUDIO_BUFF_SIZE;
+		if(Mp3OpenFile(filename,apartition) == true)
+		{
+			act_buff = fb;
+			btr = AUDIO_BUFF_SIZE;
+			br = btr + 1;
+			DMA_Audio_Init_Single(mp3_buffer, MP3_BUFF_SIZE);
+			loadneeded = true;
+			Mp3_Status = st_play;
+			hMP3Decoder = MP3InitDecoder();
+			read_ptr = audio_buffer;
+			bytes_left = AUDIO_BUFF_SIZE;
+		}
+		else
+		{
+			/* TODO: do something when file open fails */
+			retval = false;
+		}
+
 		break;
 	case st_play:
 		if(br >= btr)
 		{
-			if (RotSwPRessed())
-			{
-				Mp3_Status = st_stopped;
-				retval = false;
-			}
 			if(loadneeded)
 			{
 				if (bytes_left == AUDIO_BUFF_SIZE)
@@ -199,4 +205,29 @@ void Mp3SendBuffer()
 		else
 			act_buff = fb;
 	}
+}
+
+unsigned char Mp3MountDevices()
+{
+	unsigned int i;
+	unsigned char mountcntr = 0;
+
+	/* Put some delay to USB to work */
+	for(i=0;i<0xffff;i++)
+	{
+		if (f_mount(&USB_Fs, "1:", 1) == FR_OK)
+		{
+			mountcntr++;
+			break;
+		}
+		TM_USB_MSCHOST_Process();
+	}
+	if (f_mount(&SD_Fs, "0:", 1) == FR_OK)
+	{
+		mountcntr++;
+	}
+
+	if(mountcntr )Mp3_Status = st_init;
+
+	return mountcntr;
 }

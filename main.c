@@ -32,7 +32,6 @@ int main(void)
 {
 	int i;
 	bool play;
-	FATFS USB_Fs;
 	bool usb_mounted = false;
 	unsigned int redraw = 0;
 	char buff[20];
@@ -45,10 +44,10 @@ int main(void)
 	Cs43Init();
 	TM_DELAY_Init();
 	TM_USB_MSCHOST_Init();
-	TIMER3_Configuration(2000);
+	TIMER3_Configuration(2398);
 	GLCD_Init();
 
-
+	Mp3MountDevices();
 
     while(1)
     {
@@ -57,49 +56,23 @@ int main(void)
     	MenuProc();
     	redraw++;
 
-    	if(redraw % 1000 == 0)
+    	if(redraw % 10000 == 0)
     	{
     		memset(buff,0,sizeof(buff));
-    		sprintf(buff,"Asd: %d",x++);
+    		sprintf(buff,"Teszt: %d",x++);
     		for(i=0;i<8;i++)
     		{
-        		GLCD_WriteString("         ",0,i);
-        		GLCD_WriteString(buff,0,i);
+        		//GLCD_WriteString("         ",0,i);
+        		//GLCD_WriteString(buff,0,i);
     		}
 
     	}
-
-    	if (TM_USB_MSCHOST_Device() == TM_USB_MSCHOST_Result_Connected)
+    	/*if(Mp3Play("a.mp3",partition_sd) == false)
     	{
-    		if(usb_mounted == false)
-    		{
-    		    if (f_mount(&USB_Fs, "1:", 1) == FR_OK)
-    		    {
-    		    	if(Mp3OpenFile("a.mp3",partition_usb) == true)
-    		    	{
-    		    		play = true;
-    		    		usb_mounted = true;
-    		    	}
-    		    	else
-    		    	{
-    		        	//Unmount drive, don't forget this!
-    		            f_mount(0, "1:", 1);
-    		            play = false;
-    		    	}
-    		    }
-    		}
-    		else
-    		{
-        		if(play)
-            	{
-            		if(Mp3Play() == false)
-            		{
-            			play = 0;
-            			f_mount(0, "1:", 1);
-            		}
-            	}
-			}
-    	}
+    		//Unmount drive, don't forget this!
+    		f_mount(0, "0:", 1);
+    	}*/
+
     }
 }
 
