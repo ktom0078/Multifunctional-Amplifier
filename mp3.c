@@ -26,6 +26,10 @@ enum act_buff_enum {fb,sb};
 enum act_buff_enum act_buff;
 int errbr;
 
+unsigned int Mp3Count = 0;
+tMp3Track* Mp3Array = NULL;
+tMp3Track* tMp3Array = NULL;
+
 bool Mp3OpenFile(char *filename,TM_FATFS_Partition apartition)
 {
 	bool retval = false;

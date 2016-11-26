@@ -21,6 +21,7 @@
 #include "timer.h"
 #include "glcd.h"
 #include "mp3.h"
+#include "file.h"
 /* Notes */
 /* - needs to add USB drivers
  * - types.h  -> select.h commented out !! */
@@ -31,8 +32,6 @@
 int main(void)
 {
 	int i;
-	bool play;
-	bool usb_mounted = false;
 	unsigned int redraw = 0;
 	char buff[20];
 	char x = 0;
@@ -49,6 +48,8 @@ int main(void)
 
 	Mp3MountDevices();
 
+	scan_files("0:");
+
     while(1)
     {
     	TM_USB_MSCHOST_Process();
@@ -56,17 +57,7 @@ int main(void)
     	MenuProc();
     	redraw++;
 
-    	if(redraw % 10000 == 0)
-    	{
-    		memset(buff,0,sizeof(buff));
-    		sprintf(buff,"Teszt: %d",x++);
-    		for(i=0;i<8;i++)
-    		{
-        		//GLCD_WriteString("         ",0,i);
-        		//GLCD_WriteString(buff,0,i);
-    		}
 
-    	}
     	/*if(Mp3Play("a.mp3",partition_sd) == false)
     	{
     		//Unmount drive, don't forget this!

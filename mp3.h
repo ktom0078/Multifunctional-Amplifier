@@ -21,8 +21,17 @@ typedef enum  {
 	st_init,st_play,st_stopped,st_pause,st_end
 }Mp3_Status_e;
 
+typedef struct
+{
+	char Mp3Track[13];
+}tMp3Track;
+
 extern Mp3_Status_e Mp3_Status;
 extern FIL fil;
+extern unsigned int Mp3Count;
+extern tMp3Track* Mp3Array;
+extern tMp3Track* tMp3Array;
+
 
 bool Mp3Play(char *filename,TM_FATFS_Partition apartition);
 bool Mp3OpenFile(char *filename,TM_FATFS_Partition apartition);
