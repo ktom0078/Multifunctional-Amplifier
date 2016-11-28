@@ -19,10 +19,26 @@ typedef enum
 	ibass
 }eMenuAudioSettings;
 
+typedef enum
+{
+	Settings,
+	Main,
+	List
+}eMenuScreen;
+
+typedef enum
+{
+	ListInit,
+	ListMain
+
+}eListStates;
+
+
 void MenuInit();
 void MenuProc();
 bool RotSwPRessed();
-
+bool ButtonPRessed();
+void ListProc();
 
 
 

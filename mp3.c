@@ -29,26 +29,14 @@ int errbr;
 unsigned int Mp3Count = 0;
 tMp3Track* Mp3Array = NULL;
 tMp3Track* tMp3Array = NULL;
+tMp3Track* Mp3ActTrack = NULL;
+unsigned int Mp3ActIndex = 0;
 
-bool Mp3OpenFile(char *filename,TM_FATFS_Partition apartition)
+bool Mp3OpenFile(char *filename)
 {
 	bool retval = false;
-	char fullname[15];
 
-	if(apartition == partition_usb)
-	{
-		fullname[0] = '1';
-	}
-	else
-	{
-		fullname[0] = '0';
-	}
-	fullname[1] = ':';
-
-	memcpy(&fullname[2],filename,strlen(filename));
-	fullname[strlen(filename)+ 2] = 0;
-
-	if (f_open(&fil, fullname, FA_READ ) == FR_OK)
+	if (f_open(&fil, filename, FA_READ ) == FR_OK)
 	{
 		retval = true;
 	}
@@ -56,7 +44,7 @@ bool Mp3OpenFile(char *filename,TM_FATFS_Partition apartition)
 	return retval;
 }
 
-bool Mp3Play(char *filename,TM_FATFS_Partition apartition) {
+bool Mp3Play(char *filename) {
 	int offset, err;
 
 	unsigned int h;
@@ -72,7 +60,7 @@ bool Mp3Play(char *filename,TM_FATFS_Partition apartition) {
 	switch(Mp3_Status)
 	{
 	case st_init:
-		if(Mp3OpenFile(filename,apartition) == true)
+		if(Mp3OpenFile(filename) == true)
 		{
 			act_buff = fb;
 			btr = AUDIO_BUFF_SIZE;
@@ -163,6 +151,15 @@ bool Mp3Play(char *filename,TM_FATFS_Partition apartition) {
 		retval = false;
 		Mp3_Status = st_end;
 		break;
+	case st_changetr:
+		if(DmaAudioDone)
+		{
+			f_close(&fil);
+			retval = false;
+			Mp3_Status = st_init;
+		}
+
+		break;
 	case st_end:
 		/* Do nothing */
 		retval = false;
@@ -231,7 +228,11 @@ unsigned char Mp3MountDevices()
 		mountcntr++;
 	}
 
-	if(mountcntr )Mp3_Status = st_init;
-
 	return mountcntr;
+}
+
+void Mp3ChangeTrack(unsigned int index)
+{
+	Mp3_Status = st_changetr;
+	Mp3ActIndex = index;
 }

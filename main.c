@@ -31,7 +31,7 @@
 
 int main(void)
 {
-	int i;
+	int i=0;
 	unsigned int redraw = 0;
 	char buff[20];
 	char x = 0;
@@ -43,7 +43,7 @@ int main(void)
 	Cs43Init();
 	TM_DELAY_Init();
 	TM_USB_MSCHOST_Init();
-	TIMER3_Configuration(2398);
+	//TIMER3_Configuration(2398);
 	GLCD_Init();
 
 	Mp3MountDevices();
@@ -57,12 +57,8 @@ int main(void)
     	MenuProc();
     	redraw++;
 
+    	Mp3Play((Mp3Array[Mp3ActIndex].Path));
 
-    	/*if(Mp3Play("a.mp3",partition_sd) == false)
-    	{
-    		//Unmount drive, don't forget this!
-    		f_mount(0, "0:", 1);
-    	}*/
 
     }
 }

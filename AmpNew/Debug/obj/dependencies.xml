@@ -16,10 +16,17 @@
          <include file="..\..\..\fatfs\ff.h"/>
          <include file="..\..\..\fatfs\diskio.h"/>
       </source>
+      <source file="..\..\..\id3.h" lastModified="14cf6599012">
+         <include file="..\..\..\fatfs\ff.h"/>
+      </source>
       <source file="..\..\..\usb_msc_host\usb_core.h" lastModified="1480f5a3fa4">
          <include file="..\..\..\usb_msc_host\usb_conf.h"/>
          <include file="..\..\..\usb_msc_host\usb_regs.h"/>
          <include file="..\..\..\usb_msc_host\usb_defines.h"/>
+      </source>
+      <source file="..\..\..\id3.c" lastModified="158a5d5d6fb">
+         <include file="..\..\..\id3.h"/>
+         <include file="..\..\..\str.h"/>
       </source>
       <source file="..\..\..\usb_msc_host\usb_core.c" lastModified="1363b14863f">
          <include file="..\..\..\usb_msc_host\usb_core.h"/>
@@ -79,10 +86,10 @@
       <source file="..\..\..\cmsis_lib\include\stm32f4xx_rcc.h" lastModified="157de838098">
          <include file="..\..\..\cmsis_boot\stm32f4xx.h"/>
       </source>
-      <source file="..\..\..\gpio.h" lastModified="1586eb781d5">
+      <source file="..\..\..\gpio.h" lastModified="158a793fa6e">
          <include file="..\..\..\cmsis_lib\include\stm32f4xx_gpio.h"/>
       </source>
-      <source file="..\..\..\tm_stm32f4_fatfs.h" lastModified="1585a107486">
+      <source file="..\..\..\tm_stm32f4_fatfs.h" lastModified="158a8b9ad7e">
          <include file="..\..\..\cmsis_boot\stm32f4xx.h"/>
          <include file="..\..\..\cmsis_lib\include\stm32f4xx_rcc.h"/>
          <include file="..\..\..\cmsis_lib\include\stm32f4xx_gpio.h"/>
@@ -91,7 +98,7 @@
          <include file="..\..\..\fatfs\ff.h"/>
          <include file="..\..\..\fatfs\diskio.h"/>
       </source>
-      <source file="..\..\..\gpio.c" lastModified="1586ed8c9b0">
+      <source file="..\..\..\gpio.c" lastModified="158a7ef3a75">
          <include file="..\..\..\cmsis_lib\include\stm32f4xx_gpio.h"/>
          <include file="..\..\..\cmsis_lib\include\stm32f4xx_rcc.h"/>
          <include file="..\..\..\gpio.h"/>
@@ -253,7 +260,7 @@
          <include file="..\..\..\defines.h"/>
          <include file="..\..\..\fatfs\diskio.h"/>
       </source>
-      <source file="..\..\..\preamp.h" lastModified="158503e930b">
+      <source file="..\..\..\preamp.h" lastModified="158a8df6854">
       </source>
       <source file="..\..\..\fatfs\drivers\fatfs_sd_sdio.h" lastModified="14f222999bc">
          <include file="..\..\..\cmsis_boot\stm32f4xx.h"/>
@@ -267,7 +274,7 @@
          <include file="..\..\..\tm_stm32f4_fatfs.h"/>
          <include file="..\..\..\tm_stm32f4_gpio.h"/>
       </source>
-      <source file="..\..\..\preamp.c" lastModified="1584fc5c75c">
+      <source file="..\..\..\preamp.c" lastModified="158a8def2c3">
          <include file="..\..\..\preamp.h"/>
          <include file="..\..\..\i2c.h"/>
          <include file="..\..\..\gpio.h"/>
@@ -281,7 +288,7 @@
          <include file="..\..\..\cmsis_lib\include\stm32f4xx_usart.h"/>
          <include file="..\..\..\cmsis_lib\include\stm32f4xx_rcc.h"/>
       </source>
-      <source file="..\..\..\main.c" lastModified="158a2ad4f1d">
+      <source file="..\..\..\main.c" lastModified="158a8d711fc">
          <include file="..\..\..\cmsis_lib\include\stm32f4xx_gpio.h"/>
          <include file="..\..\..\cmsis_lib\include\stm32f4xx_rcc.h"/>
          <include file="..\..\..\cmsis_boot\system_stm32f4xx.h"/>
@@ -320,7 +327,7 @@
          <include file="..\..\..\tm_stm32f4_gpio.h"/>
          <include file="..\..\..\tm_stm32f4_exti.h"/>
       </source>
-      <source file="..\..\..\mp3.h" lastModified="158a29d8909">
+      <source file="..\..\..\mp3.h" lastModified="158a8c3cb89">
          <include file="..\..\..\helix\pub\mp3dec.h"/>
          <include file="..\..\..\dma.h"/>
          <include file="..\..\..\fatfs\ff.h"/>
@@ -331,12 +338,6 @@
       </source>
       <source file="..\..\..\tm_stm32f4_rotary_encoder.c" lastModified="14c40cbd738">
          <include file="..\..\..\tm_stm32f4_rotary_encoder.h"/>
-      </source>
-      <source file="..\..\..\mp3.c" lastModified="158a29461e1">
-         <include file="..\..\..\mp3.h"/>
-         <include file="..\..\..\gpio.h"/>
-         <include file="..\..\..\menu.h"/>
-         <include file="..\..\..\tm_stm32f4_usb_msc_host.h"/>
       </source>
       <source file="..\..\..\tm_stm32f4_usb_msc_host.h" lastModified="1585992c731">
          <include file="..\..\..\cmsis_boot\stm32f4xx.h"/>
@@ -406,6 +407,14 @@
          <include file="..\..\..\cmsis_lib\include\stm32f4xx_rcc.h"/>
          <include file="..\..\..\i2s.h"/>
          <include file="..\..\..\gpio.h"/>
+      </source>
+      <source file="..\..\..\file.c" lastModified="158a8c48787">
+         <include file="..\..\..\file.h"/>
+         <include file="..\..\..\str.h"/>
+         <include file="..\..\..\pcm.h"/>
+         <include file="..\..\..\mp3.h"/>
+         <include file="..\..\..\glcd.h"/>
+         <include file="..\..\..\id3.h"/>
       </source>
       <source file="..\..\..\cmsis_lib\include\stm32f4xx_spi.h" lastModified="1584057d485">
          <include file="..\..\..\cmsis_boot\stm32f4xx.h"/>
@@ -574,18 +583,18 @@
       </source>
       <source file="..\..\..\syscalls\syscalls.c" lastModified="1586f2cb7dd">
       </source>
-      <source file="..\..\..\menu.h" lastModified="1581b1613fe">
+      <source file="..\..\..\menu.h" lastModified="158a806c1f4">
          <include file="..\..\..\attributes.h"/>
          <include file="..\..\..\preamp.h"/>
       </source>
-      <source file="..\..\..\timer.h" lastModified="1586f72f5c1">
+      <source file="..\..\..\timer.h" lastModified="158a7de676a">
          <include file="..\..\..\cmsis_lib\include\stm32f4xx_tim.h"/>
       </source>
       <source file="..\..\..\helix\pub\mp3common.h" lastModified="138811ebe40">
          <include file="..\..\..\helix\pub\mp3dec.h"/>
          <include file="..\..\..\helix\pub\statname.h"/>
       </source>
-      <source file="..\..\..\menu.c" lastModified="1581c192f5b">
+      <source file="..\..\..\menu.c" lastModified="158a8bd93b2">
          <include file="..\..\..\menu.h"/>
          <include file="..\..\..\attributes.h"/>
          <include file="..\..\..\tm_stm32f4_rotary_encoder.h"/>
@@ -593,8 +602,10 @@
          <include file="..\..\..\bt.h"/>
          <include file="..\..\..\gpio.h"/>
          <include file="..\..\..\timer.h"/>
+         <include file="..\..\..\glcd.h"/>
+         <include file="..\..\..\mp3.h"/>
       </source>
-      <source file="..\..\..\timer.c" lastModified="158a211f42f">
+      <source file="..\..\..\timer.c" lastModified="158a7d6d055">
          <include file="..\..\..\timer.h"/>
          <include file="..\..\..\cmsis_lib\include\stm32f4xx_rcc.h"/>
          <include file="..\..\..\cmsis_lib\include\misc.h"/>

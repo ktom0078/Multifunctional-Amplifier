@@ -1,211 +1,214 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <history>
-   <processor signature="arm-none-eabi-gcc noversion nomachine -mcpu=cortex-m4 -mthumb -Wall -ffunction-sections -g -O0 -c -DSTM32F405RG -DSTM32F4XX -DUSE_STDPERIPH_DRIVER -D__ASSEMBLY__ -I..\..\..\workspace\AmpNew\cmsis_boot -I..\..\..\workspace\AmpNew -I..\..\..\workspace\AmpNew\fatfs\drivers -I..\..\..\workspace\AmpNew\helix -I..\..\..\workspace\AmpNew\usb_msc_host -I..\..\..\workspace\AmpNew\cmsis -I..\..\..\workspace\AmpNew\helix\real -I..\..\..\workspace\AmpNew\helix\pub -I..\..\..\workspace\AmpNew\cmsis_lib\include -I..\..\..\workspace -I..\..\..\workspace\AmpNew\fatfs -I..\..\..\workspace\AmpNew\cmsis_lib -I..\..\..">
-      <target file="syscalls.o" lastModified="158a2a424c3">
+   <processor signature="arm-none-eabi-gcc noversion nomachine -mcpu=cortex-m4 -mthumb -Wall -ffunction-sections -g -O3 -c -DSTM32F405RG -DSTM32F4XX -DUSE_STDPERIPH_DRIVER -D__ASSEMBLY__ -I..\..\..\workspace\AmpNew\cmsis_boot -I..\..\..\workspace\AmpNew -I..\..\..\workspace\AmpNew\fatfs\drivers -I..\..\..\workspace\AmpNew\helix -I..\..\..\workspace\AmpNew\usb_msc_host -I..\..\..\workspace\AmpNew\cmsis -I..\..\..\workspace\AmpNew\helix\real -I..\..\..\workspace\AmpNew\helix\pub -I..\..\..\workspace\AmpNew\cmsis_lib\include -I..\..\..\workspace -I..\..\..\workspace\AmpNew\fatfs -I..\..\..\workspace\AmpNew\cmsis_lib -I..\..\..">
+      <target file="syscalls.o" lastModified="158a7e789e8">
          <source file="..\..\..\syscalls\syscalls.c" lastModified="1586f2ca83d"/>
       </target>
-      <target file="tm_stm32f4_timer_properties.o" lastModified="158a2a433c2">
+      <target file="tm_stm32f4_timer_properties.o" lastModified="158a7e7ac81">
          <source file="..\..\..\tm_stm32f4_timer_properties.c" lastModified="15840572361"/>
       </target>
-      <target file="scalfact.o" lastModified="158a2a40c3b">
+      <target file="scalfact.o" lastModified="158a7e76392">
          <source file="..\..\..\helix\real\scalfact.c" lastModified="138811ebe40"/>
       </target>
-      <target file="menu.o" lastModified="158a2a4211b">
-         <source file="..\..\..\menu.c" lastModified="1581c192f5b"/>
+      <target file="menu.o" lastModified="158a8df7448">
+         <source file="..\..\..\menu.c" lastModified="158a8bd93b2"/>
       </target>
-      <target file="usbh_usr.o" lastModified="158a2a425fd">
+      <target file="mp3.o" lastModified="158a8e3bb8c">
+         <source file="..\..\..\mp3.c" lastModified="158a8e349c5"/>
+      </target>
+      <target file="usbh_usr.o" lastModified="158a7e78b90">
          <source file="..\..\..\usb_msc_host\usbh_usr.c" lastModified="14823c11847"/>
       </target>
-      <target file="mp3.o" lastModified="158a2a40f1c">
-         <source file="..\..\..\mp3.c" lastModified="158a2945df9"/>
-      </target>
-      <target file="fatfs_usb.o" lastModified="158a2a417c5">
+      <target file="fatfs_usb.o" lastModified="158a7e77694">
          <source file="..\..\..\fatfs\drivers\fatfs_usb.c" lastModified="14e2ed62ce8"/>
       </target>
-      <target file="misc.o" lastModified="158a2a4304c">
+      <target file="misc.o" lastModified="158a7e7a6fb">
          <source file="..\..\..\cmsis_lib\source\misc.c" lastModified="157ed31bdc9"/>
       </target>
-      <target file="i2c.o" lastModified="158a2a40d67">
+      <target file="i2c.o" lastModified="158a7e764cd">
          <source file="..\..\..\i2c.c" lastModified="157e3f0c3c7"/>
       </target>
-      <target file="imdct.o" lastModified="158a2a41233">
+      <target file="imdct.o" lastModified="158a7e76faf">
          <source file="..\..\..\helix\real\imdct.c" lastModified="138811ebe40"/>
       </target>
-      <target file="pcm.o" lastModified="158a2a40cc8">
+      <target file="pcm.o" lastModified="158a8df6efd">
          <source file="..\..\..\pcm.c" lastModified="15877697d6b"/>
       </target>
-      <target file="dequant.o" lastModified="158a2a41053">
+      <target file="dequant.o" lastModified="158a7e769fa">
          <source file="..\..\..\helix\real\dequant.c" lastModified="13881b0c510"/>
       </target>
-      <target file="polyphase.o" lastModified="158a2a4333b">
+      <target file="polyphase.o" lastModified="158a7e7abc1">
          <source file="..\..\..\helix\real\polyphase.c" lastModified="138811ebe40"/>
       </target>
-      <target file="tm_stm32f4_exti.o" lastModified="158a2a410e3">
+      <target file="tm_stm32f4_exti.o" lastModified="158a7e76ad5">
          <source file="..\..\..\tm_stm32f4_exti.c" lastModified="14f031f4f9b"/>
       </target>
-      <target file="tm_stm32f4_gpio.o" lastModified="158a2a43286">
+      <target file="tm_stm32f4_gpio.o" lastModified="158a7e7aa5b">
          <source file="..\..\..\tm_stm32f4_gpio.c" lastModified="14de25630e8"/>
       </target>
-      <target file="preamp.o" lastModified="158a2a4297a">
-         <source file="..\..\..\preamp.c" lastModified="1584fc5c75c"/>
+      <target file="preamp.o" lastModified="158a8df7531">
+         <source file="..\..\..\preamp.c" lastModified="158a8def2c3"/>
       </target>
-      <target file="diskio.o" lastModified="158a2a416ab">
+      <target file="id3.o" lastModified="158a7e78722">
+         <source file="..\..\..\id3.c" lastModified="158a5d5d313"/>
+      </target>
+      <target file="diskio.o" lastModified="158a8c16e61">
          <source file="..\..\..\fatfs\diskio.c" lastModified="14ddc3290f8"/>
       </target>
-      <target file="stm32f4xx_tim.o" lastModified="158a2a434dc">
+      <target file="stm32f4xx_tim.o" lastModified="158a7e7aea3">
          <source file="..\..\..\cmsis_lib\source\stm32f4xx_tim.c" lastModified="1581a24bb25"/>
       </target>
-      <target file="DMA.o" lastModified="158a2a42428">
+      <target file="DMA.o" lastModified="158a7e7891e">
          <source file="..\..\..\DMA.c" lastModified="1587c7dd589"/>
       </target>
-      <target file="i2s.o" lastModified="158a2a42672">
+      <target file="i2s.o" lastModified="158a7e78c0d">
          <source file="..\..\..\i2s.c" lastModified="1584f4b5070"/>
       </target>
-      <target file="stm32f4xx_exti.o" lastModified="158a2a42f0d">
+      <target file="stm32f4xx_exti.o" lastModified="158a7e7a5af">
          <source file="..\..\..\cmsis_lib\source\stm32f4xx_exti.c" lastModified="157ed34ccf4"/>
       </target>
-      <target file="stm32f4xx_gpio.o" lastModified="158a2a42270">
+      <target file="stm32f4xx_gpio.o" lastModified="158a7e78689">
          <source file="..\..\..\cmsis_lib\source\stm32f4xx_gpio.c" lastModified="157de839cbb"/>
       </target>
-      <target file="tm_stm32f4_spi.o" lastModified="158a2a4209b">
+      <target file="tm_stm32f4_spi.o" lastModified="158a7e783fe">
          <source file="..\..\..\tm_stm32f4_spi.c" lastModified="14f312e7c93"/>
       </target>
-      <target file="usb_bsp.o" lastModified="158a2a426fb">
+      <target file="usb_bsp.o" lastModified="158a7e78ca6">
          <source file="..\..\..\usb_msc_host\usb_bsp.c" lastModified="15859c7b0af"/>
       </target>
-      <target file="file.o" lastModified="158a2af3327">
-         <source file="..\..\..\file.c" lastModified="158a2af23c4"/>
+      <target file="file.o" lastModified="158a8c4f187">
+         <source file="..\..\..\file.c" lastModified="158a8c4839f"/>
       </target>
-      <target file="mp3tabs.o" lastModified="158a2a41505">
+      <target file="mp3tabs.o" lastModified="158a7e77371">
          <source file="..\..\..\helix\mp3tabs.c" lastModified="138811ebe40"/>
       </target>
-      <target file="usbh_msc_scsi.o" lastModified="158a2a42307">
+      <target file="usbh_msc_scsi.o" lastModified="158a7e78800">
          <source file="..\..\..\usb_msc_host\usbh_msc_scsi.c" lastModified="1363b1483dd"/>
       </target>
-      <target file="tm_stm32f4_fatfs.o" lastModified="158a2a408d7">
+      <target file="tm_stm32f4_fatfs.o" lastModified="158a8c16a73">
          <source file="..\..\..\tm_stm32f4_fatfs.c" lastModified="14f25c9c916"/>
       </target>
-      <target file="tm_stm32f4_rotary_encoder.o" lastModified="158a2a41b93">
+      <target file="tm_stm32f4_rotary_encoder.o" lastModified="158a7e77c92">
          <source file="..\..\..\tm_stm32f4_rotary_encoder.c" lastModified="14c40cbd738"/>
       </target>
-      <target file="huffman.o" lastModified="158a2a42892">
+      <target file="huffman.o" lastModified="158a7e78fe0">
          <source file="..\..\..\helix\real\huffman.c" lastModified="138811ebe40"/>
       </target>
-      <target file="stm32f4xx_usart.o" lastModified="158a2a413f9">
+      <target file="stm32f4xx_usart.o" lastModified="158a7e771e5">
          <source file="..\..\..\cmsis_lib\source\stm32f4xx_usart.c" lastModified="15801eea9cf"/>
       </target>
-      <target file="buffers.o" lastModified="158a2a429eb">
+      <target file="buffers.o" lastModified="158a7e791d4">
          <source file="..\..\..\helix\real\buffers.c" lastModified="1388af06a40"/>
       </target>
-      <target file="glcd.o" lastModified="158a2a431ed">
+      <target file="glcd.o" lastModified="158a7e7a8fe">
          <source file="..\..\..\glcd.c" lastModified="1586f118769"/>
       </target>
-      <target file="stm32f4xx_rcc.o" lastModified="158a2a41a36">
+      <target file="stm32f4xx_rcc.o" lastModified="158a7e77a02">
          <source file="..\..\..\cmsis_lib\source\stm32f4xx_rcc.c" lastModified="157de8380a2"/>
       </target>
-      <target file="bitstream.o" lastModified="158a2a40fe3">
+      <target file="bitstream.o" lastModified="158a7e76968">
          <source file="..\..\..\helix\real\bitstream.c" lastModified="138811ebe40"/>
       </target>
-      <target file="usb_hcd.o" lastModified="158a2a42c27">
+      <target file="usb_hcd.o" lastModified="158a7e7a0cb">
          <source file="..\..\..\usb_msc_host\usb_hcd.c" lastModified="1363b14867d"/>
       </target>
-      <target file="dct32.o" lastModified="158a2a42de5">
+      <target file="dct32.o" lastModified="158a7e7a3da">
          <source file="..\..\..\helix\real\dct32.c" lastModified="138811ebe40"/>
       </target>
-      <target file="mp3dec.o" lastModified="158a2a41838">
+      <target file="mp3dec.o" lastModified="158a7e77775">
          <source file="..\..\..\helix\mp3dec.c" lastModified="1587ceeca88"/>
       </target>
-      <target file="gpio.o" lastModified="158a2a41e08">
-         <source file="..\..\..\gpio.c" lastModified="1586ed8c9b0"/>
+      <target file="gpio.o" lastModified="158a807c353">
+         <source file="..\..\..\gpio.c" lastModified="158a7ef3a75"/>
       </target>
-      <target file="trigtabs_fixpt.o" lastModified="158a2a428f1">
+      <target file="trigtabs_fixpt.o" lastModified="158a7e7904d">
          <source file="..\..\..\helix\real\trigtabs_fixpt.c" lastModified="138811ebe40"/>
       </target>
-      <target file="unicode.o" lastModified="158a2a40935">
+      <target file="unicode.o" lastModified="158a7e75e6d">
          <source file="..\..\..\fatfs\option\unicode.c" lastModified="14b6fd41140"/>
       </target>
-      <target file="bt.o" lastModified="158a2a41d77">
+      <target file="bt.o" lastModified="158a7e77ffa">
          <source file="..\..\..\bt.c" lastModified="15816c4b343"/>
       </target>
-      <target file="startup_stm32f4xx.o" lastModified="158a2a4170d">
-         <source file="..\..\..\cmsis_boot\startup\startup_stm32f4xx.c" lastModified="157de8349a3"/>
-      </target>
-      <target file="fatfs_sd.o" lastModified="158a2a41c5b">
+      <target file="fatfs_sd.o" lastModified="158a8c1724c">
          <source file="..\..\..\fatfs\drivers\fatfs_sd.c" lastModified="15840851676"/>
       </target>
-      <target file="usb_hcd_int.o" lastModified="158a2a435bb">
+      <target file="usb_hcd_int.o" lastModified="158a7e7af8c">
          <source file="..\..\..\usb_msc_host\usb_hcd_int.c" lastModified="1363b14868d"/>
       </target>
-      <target file="dqchan.o" lastModified="158a2a40b97">
+      <target file="startup_stm32f4xx.o" lastModified="158a7e775d4">
+         <source file="..\..\..\cmsis_boot\startup\startup_stm32f4xx.c" lastModified="157de8349a3"/>
+      </target>
+      <target file="dqchan.o" lastModified="158a7e7620d">
          <source file="..\..\..\helix\real\dqchan.c" lastModified="138811ebe40"/>
       </target>
-      <target file="stm32f4xx_dma.o" lastModified="158a2a4255d">
+      <target file="stm32f4xx_dma.o" lastModified="158a7e78ac2">
          <source file="..\..\..\cmsis_lib\source\stm32f4xx_dma.c" lastModified="1584e352232"/>
       </target>
-      <target file="tm_stm32f4_usart.o" lastModified="158a2a41b10">
+      <target file="tm_stm32f4_usart.o" lastModified="158a7e77c12">
          <source file="..\..\..\tm_stm32f4_usart.c" lastModified="15807df2c8c"/>
       </target>
-      <target file="hufftabs.o" lastModified="158a2a41166">
-         <source file="..\..\..\helix\real\hufftabs.c" lastModified="138811ebe40"/>
-      </target>
-      <target file="timer.o" lastModified="158a2a412b7">
-         <source file="..\..\..\timer.c" lastModified="158a211f42f"/>
-      </target>
-      <target file="usbh_msc_bot.o" lastModified="158a2a42cba">
+      <target file="usbh_msc_bot.o" lastModified="158a7e7a1a7">
          <source file="..\..\..\usb_msc_host\usbh_msc_bot.c" lastModified="1363b148380"/>
       </target>
-      <target file="usbh_stdreq.o" lastModified="158a2a414ae">
+      <target file="timer.o" lastModified="158a7e77036">
+         <source file="..\..\..\timer.c" lastModified="158a7d6d055"/>
+      </target>
+      <target file="hufftabs.o" lastModified="158a7e76b55">
+         <source file="..\..\..\helix\real\hufftabs.c" lastModified="138811ebe40"/>
+      </target>
+      <target file="usbh_stdreq.o" lastModified="158a7e7730d">
          <source file="..\..\..\usb_msc_host\usbh_stdreq.c" lastModified="1363b1484f7"/>
       </target>
-      <target file="usbh_core.o" lastModified="158a2a421e3">
+      <target file="usbh_core.o" lastModified="158a7e785cf">
          <source file="..\..\..\usb_msc_host\usbh_core.c" lastModified="1363b148499"/>
       </target>
-      <target file="str.o" lastModified="158a2a41562">
+      <target file="str.o" lastModified="158a7e773d7">
          <source file="..\..\..\str.c" lastModified="158a221f25b"/>
       </target>
-      <target file="tm_stm32f4_usb_msc_host.o" lastModified="158a2a42794">
-         <source file="..\..\..\tm_stm32f4_usb_msc_host.c" lastModified="15859c74164"/>
-      </target>
-      <target file="stproc.o" lastModified="158a2a4280d">
+      <target file="stproc.o" lastModified="158a7e78e79">
          <source file="..\..\..\helix\real\stproc.c" lastModified="138811ebe40"/>
       </target>
-      <target file="usb_core.o" lastModified="158a2a40ac2">
+      <target file="tm_stm32f4_usb_msc_host.o" lastModified="158a7e78d42">
+         <source file="..\..\..\tm_stm32f4_usb_msc_host.c" lastModified="15859c74164"/>
+      </target>
+      <target file="usb_core.o" lastModified="158a7e760ee">
          <source file="..\..\..\usb_msc_host\usb_core.c" lastModified="1363b14863f"/>
       </target>
-      <target file="subband.o" lastModified="158a2a415bf">
+      <target file="subband.o" lastModified="158a7e77454">
          <source file="..\..\..\helix\real\subband.c" lastModified="138811ebe40"/>
       </target>
-      <target file="stm32f4xx_syscfg.o" lastModified="158a2a409d2">
-         <source file="..\..\..\cmsis_lib\source\stm32f4xx_syscfg.c" lastModified="157ed348dcc"/>
-      </target>
-      <target file="stm32f4xx_i2c.o" lastModified="158a2a42e92">
+      <target file="stm32f4xx_i2c.o" lastModified="158a7e7a500">
          <source file="..\..\..\cmsis_lib\source\stm32f4xx_i2c.c" lastModified="157de83b2ac"/>
       </target>
-      <target file="stm32f4xx_spi.o" lastModified="158a2a42d5a">
+      <target file="stm32f4xx_syscfg.o" lastModified="158a7e75f01">
+         <source file="..\..\..\cmsis_lib\source\stm32f4xx_syscfg.c" lastModified="157ed348dcc"/>
+      </target>
+      <target file="stm32f4xx_spi.o" lastModified="158a7e7a2a8">
          <source file="..\..\..\cmsis_lib\source\stm32f4xx_spi.c" lastModified="1584057d486"/>
       </target>
-      <target file="ff.o" lastModified="158a2a42ba4">
+      <target file="ff.o" lastModified="158a7e7a013">
          <source file="..\..\..\fatfs\ff.c" lastModified="14bb5aa4590"/>
       </target>
-      <target file="tm_stm32f4_delay.o" lastModified="158a2a41ede">
+      <target file="tm_stm32f4_delay.o" lastModified="158a8c3dca7">
          <source file="..\..\..\tm_stm32f4_delay.c" lastModified="158816fe0d5"/>
       </target>
-      <target file="main.o" lastModified="158a2ae3419">
-         <source file="..\..\..\main.c" lastModified="158a2ad4365"/>
+      <target file="main.o" lastModified="158a8df7308">
+         <source file="..\..\..\main.c" lastModified="158a8d70644"/>
       </target>
-      <target file="usbh_msc_core.o" lastModified="158a2a41d06">
-         <source file="..\..\..\usb_msc_host\usbh_msc_core.c" lastModified="1481e36625b"/>
-      </target>
-      <target file="usbh_ioreq.o" lastModified="158a2a42fb7">
+      <target file="usbh_ioreq.o" lastModified="158a7e7a67b">
          <source file="..\..\..\usb_msc_host\usbh_ioreq.c" lastModified="1363b1484d7"/>
       </target>
-      <target file="system_stm32f4xx.o" lastModified="158a2a423a9">
+      <target file="usbh_msc_core.o" lastModified="158a7e77f8a">
+         <source file="..\..\..\usb_msc_host\usbh_msc_core.c" lastModified="1481e36625b"/>
+      </target>
+      <target file="system_stm32f4xx.o" lastModified="158a7e788a1">
          <source file="..\..\..\cmsis_boot\system_stm32f4xx.c" lastModified="1581becdf46"/>
       </target>
-      <target file="usbh_hcs.o" lastModified="158a2a4134d">
+      <target file="usbh_hcs.o" lastModified="158a7e770df">
          <source file="..\..\..\usb_msc_host\usbh_hcs.c" lastModified="1363b1484c8"/>
       </target>
-      <target file="syscall.o" lastModified="158a2a41fe6">
+      <target file="syscall.o" lastModified="158a7e782e2">
          <source file="..\..\..\fatfs\option\syscall.c" lastModified="14d296b2020"/>
       </target>
    </processor>

@@ -505,10 +505,6 @@ typedef struct {
 	uint32_t FilesCount;   /*!< Number of files in last search operation */
 } TM_FATFS_Search_t;
 
-typedef enum {
-	partition_sd,
-	partition_usb
-}TM_FATFS_Partition;
 
 /**
  * @}

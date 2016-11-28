@@ -15,7 +15,7 @@ void Tim2Init(unsigned short int period ) {
 
     NVIC_InitTypeDef nvicStructure;
     nvicStructure.NVIC_IRQChannel = TIM2_IRQn;
-    nvicStructure.NVIC_IRQChannelPreemptionPriority = 0;
+    nvicStructure.NVIC_IRQChannelPreemptionPriority = 5;
     nvicStructure.NVIC_IRQChannelSubPriority = 0;
     nvicStructure.NVIC_IRQChannelCmd = ENABLE;
     NVIC_Init(&nvicStructure);
@@ -27,10 +27,22 @@ void Tim2Start()
 	TIM_ITConfig(TIM2, TIM_IT_Update, ENABLE);
 }
 
+void Tim4Start()
+{
+	TIM_Cmd(TIM4, ENABLE); //start
+	TIM_ITConfig(TIM4, TIM_IT_Update, ENABLE);
+}
+
 void Tim2Stop()
 {
 	TIM_ITConfig(TIM2, TIM_IT_Update, DISABLE);
 	TIM_Cmd(TIM2, DISABLE); //stop
+}
+
+void Tim4Stop()
+{
+	TIM_ITConfig(TIM4, TIM_IT_Update, DISABLE);
+	TIM_Cmd(TIM4, DISABLE); //stop
 }
 
 void TIMER3_Configuration(int duty)

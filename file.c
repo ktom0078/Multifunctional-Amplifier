@@ -4,7 +4,7 @@
 #include "mp3.h"
 #include "stdlib.h"
 #include "glcd.h"
-
+#include "id3.h"
 
 FRESULT scan_files (
     char* path        /* Start node to be scanned (also used as work area) */
@@ -13,9 +13,13 @@ FRESULT scan_files (
     FRESULT res;
     FILINFO fno;
     DIR dir;
+    FIL tfil;
     int i;
     char *fn;   /* This function assumes non-Unicode configuration */
     char buff[20];
+    char* filename;
+    char* artist;
+    char* title;
 
     res = f_opendir(&dir, path);                       /* Open the directory */
     if (res == FR_OK)
@@ -37,7 +41,17 @@ FRESULT scan_files (
 					if (tMp3Array!=NULL)
 					{
 						Mp3Array=tMp3Array;
-						StrCopy(fn,(char*)(&(Mp3Array[Mp3Count-1].Mp3Track)));
+						filename = (char*)(&(Mp3Array[Mp3Count-1].Path));
+						artist   = (char*)(&(Mp3Array[Mp3Count-1].Artist));
+						title    = (char*)(&(Mp3Array[Mp3Count-1].Title));
+						/* Copy the drive ID, 0: - sd, 1: - usb */
+						StrCopy(path,filename);
+						StrCopy(fn,filename+2); // skip the 0: or 1:
+
+						if (f_open(&tfil, filename, FA_READ ) == FR_OK)
+						{
+							Mp3ReadId3V2Tag(&tfil, artist, ID3_DATA_LEN, title, ID3_DATA_LEN);
+						}
 					}
 					else
 					{
@@ -48,13 +62,20 @@ FRESULT scan_files (
 			}
 
         }
-        f_closedir(&dir);
+        if(Mp3Count)
+        {
+        	Mp3ActIndex = 0;
+        	Mp3ActTrack = (tMp3Track*)(&Mp3Array[Mp3ActIndex]);
+        	Mp3_Status = st_init;
+       	}
 
+        f_closedir(&dir);
+        /*
         for(i=0;i<Mp3Count;i++)
         {
-        	sprintf(buff,"%s",Mp3Array[i].Mp3Track);
+        	sprintf(buff,"%s",Mp3Array[i].Path);
         	GLCD_WriteString(buff,0,i);
-        }
+        }*/
     }
 
     return res;

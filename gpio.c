@@ -36,6 +36,8 @@ void Gpio_Init()
 	/* Init buttons */
 	TM_EXTI_Attach(ROT_PORT, ROT_SW_PIN, TM_EXTI_Trigger_Falling);
 
+	TM_EXTI_Attach(BUTTON_PORT, BUTTON_PIN, TM_EXTI_Trigger_Falling);
+
 	GPIO_WriteBit(I2C_PORT,I2C_OE_PIN,Bit_SET);  // disable OE
 
 	GPIO_PinAFConfig(I2C_PORT, GPIO_PinSource6, GPIO_AF_I2C1);	// SCL
@@ -63,14 +65,17 @@ void Gpio_Init()
 	GPIO_Init(GPIOC, &GPIO_LCDStruct2);
 
 	// Timer3_CH4 - PC9, GLCD BackLight PWM
-	GPIO_PinAFConfig(GPIOC,GPIO_PinSource9,GPIO_AF_TIM3);
+	//GPIO_PinAFConfig(GPIOC,GPIO_PinSource9,GPIO_AF_TIM3);
+	/* Pwm was not wokring, display was dimming, replaced to fix maximum */
 	GPIO_InitTypeDef PWMStruct;
 	PWMStruct.GPIO_Pin = GLCD_PWM_PIN;
-	PWMStruct.GPIO_Mode = GPIO_Mode_AF;
+	PWMStruct.GPIO_Mode = GPIO_Mode_OUT;
 	PWMStruct.GPIO_Speed = GPIO_Speed_50MHz;
 	PWMStruct.GPIO_OType = GPIO_OType_PP;
 	PWMStruct.GPIO_PuPd = GPIO_PuPd_NOPULL;
 	GPIO_Init(GLCD_PWM_PORT, &PWMStruct);
+
+	GPIO_WriteBit(GLCD_PWM_PORT,GLCD_PWM_PIN,Bit_SET); // enable backlight
 
 }
 
