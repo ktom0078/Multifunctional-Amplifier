@@ -7,22 +7,26 @@
 #include "timer.h"
 #include "glcd.h"
 #include "mp3.h"
+#include "str.h"
 
 /* Local variables  */
 static eMenuScreen MenuScreen;
-static eListStates ListState;
+static eMenuStates ListState;
+static eMenuStates MainState;
 static TM_RE_t RE1_Data;
 static bool RotSwPress = false;
 static bool ButtonPress = false;
 static bool overflow = true;
-static unsigned char menuindex;
+static bool MmenuSelected = false;
+static unsigned char MmenuIndex;
 static char PageIndex;
 static tMenuAudioSettings MenuAudioSettings[MENU_AUDIO_SETTINGS_NUM] =
 {
-/* 		value						callback */
-		{PREAMP_STARTUP_VOL, 		PreampSetVol},
-		{PREAMP_STARTUP_TREBLE,		PreampSetTreble},
-		{PREAMP_STARTUP_BASS, 		PreampSetBass}
+/* 		value										callback */
+		{&AudioSettings.volume, 					PreampSetVol},
+		{&AudioSettings.treble,						PreampSetTreble},
+		{&AudioSettings.bass, 						PreampSetBass},
+		{(unsigned char*)&AudioSettings.input,		PreampSetSourceWrapper}
 };
 unsigned char presscnt = 0;
 volatile unsigned char x = 0;
@@ -31,6 +35,29 @@ volatile unsigned char x = 0;
 #define ROTARY_LEFT 	(RE1_Data.Diff < 0)
 #define PAGE_INDEX_MAX	(Mp3Count != 0 ? (Mp3Count / 8) :0)
 #define PAGE_INDEX_MIN  0
+#define MMENU_INDEX_MIN 0
+#define MMENU_INDEX_MAX 2
+
+
+#define SourceString 	"Source:"
+#define VolumeString  	"Attenuation:"
+#define BassString  	"Bass:"
+#define TrebleString  	"Treble:"
+
+#define DAC_STRING		"DAC"
+#define RCA_STRING		"RCA"
+#define BT_STRING		"Bluetooth"
+
+char* MenuStrings[] =
+{
+	VolumeString,TrebleString,BassString,SourceString
+};
+
+char* SourceStrings[] =
+{
+	DAC_STRING,RCA_STRING,BT_STRING
+};
+
 
 void MenuInit()
 {
@@ -42,8 +69,9 @@ void MenuInit()
 	Tim4Init(40);
 
 	/* Start with the list screen */
-	MenuScreen = List;
-	ListState = ListInit;
+	MenuScreen = Main;
+	ListState = StMenuInit;
+	MainState = StMenuInit;
 
 	PageIndex = 0;
 }
@@ -63,6 +91,7 @@ void MenuProc()
 	case Settings:
 		break;
 	case Main:
+		MainMenuProc();
 		break;
 	}
 }
@@ -136,13 +165,12 @@ void ListProc()
 	unsigned int i,j,page;
     char* filename;
     char* title;
-    char buff[20];
     bool redraw = false;
 
 
 	switch(ListState)
 	{
-	case ListInit:
+	case StMenuInit:
 		GLCD_Clear();
 
 		if(overflow)
@@ -154,7 +182,7 @@ void ListProc()
 			ListIndex = 7;
 		}
 
-		ListState = ListMain;
+		ListState = StMenuMain;
 
 		GLCD_WriteString(">",0,ListIndex);
 		/* Put the list from the tracks */
@@ -176,14 +204,14 @@ void ListProc()
 			}
 		}
 		break;
-	case ListMain:
+	case StMenuMain:
 		if(ROTARY_LEFT)
 		{
 			if(ListIndex == 0 && PageIndex > PAGE_INDEX_MIN)
 			{
 				/* Draw a new page */
 				PageIndex--;
-				ListState = ListInit;
+				ListState = StMenuInit;
 				overflow = false;
 			}
 			else if(ListIndex > 0)
@@ -201,7 +229,7 @@ void ListProc()
 			{
 				/* Draw a new page */
 				PageIndex++;
-				ListState = ListInit;
+				ListState = StMenuInit;
 				overflow = true;
 			}
 			else if(ListIndex < 7 && ((PageIndex * 8) + ListIndex) < Mp3Count)
@@ -223,6 +251,134 @@ void ListProc()
 		if(RotSwPRessed())
 		{
 			Mp3ChangeTrack((PageIndex * 8) + ListIndex);
+		}
+		break;
+	}
+}
+
+void RemoveFromIndex(unsigned char index)
+{
+	char buff[12],outbuff[12];
+	if(index == 3)
+	{
+		sprintf(buff,"%s",SourceStrings[AudioSettings.input]);
+	}
+	else
+	{
+		sprintf(buff,"%d",(*MenuAudioSettings[index].value));
+	}
+
+	StrFillSpace(strlen(buff),outbuff);
+	GLCD_WriteString(outbuff,6 + (6 * strlen(MenuStrings[index])),index);
+}
+void PutToIndex(unsigned char index)
+{
+	char buff[10];
+	if(index == 3)
+	{
+		sprintf(buff,"%s",SourceStrings[AudioSettings.input]);
+	}
+	else
+	{
+		sprintf(buff,"%d",(*MenuAudioSettings[index].value));
+	}
+	GLCD_WriteString(buff,6 + (6 * strlen(MenuStrings[index])),index);
+}
+
+void MainMenuProc()
+{
+	bool redraw = false;
+	char buff[12];
+	unsigned char i;
+
+	switch(MainState)
+	{
+	case StMenuInit:
+		GLCD_Clear();
+		MmenuIndex = 0;
+		MmenuSelected = false;
+		GLCD_WriteString(">",0,0);
+		for(i=0;i<4;i++)
+		{
+			GLCD_WriteString(MenuStrings[i],6,i);
+			if(i == 3)
+			{
+				sprintf(buff,"%s",SourceStrings[AudioSettings.input]);
+			}
+			else
+			{
+				sprintf(buff,"%d",*((char*)(((char*)(&AudioSettings))+i)));
+			}
+			GLCD_WriteString(buff,6 * strlen(MenuStrings[i]) + 6,i);
+
+		}
+
+		MainState = StMenuMain;
+
+
+		break;
+	case StMenuMain:
+		if(MmenuSelected)
+		{
+			if(ROTARY_LEFT)
+			{
+				RemoveFromIndex(MmenuIndex);
+				MenuAudioSettings[MmenuIndex].Cb((MenuAudioSettings[MmenuIndex].value),Increase);
+				PutToIndex(MmenuIndex);
+			}
+			else if(ROTARY_RIGHT)
+			{
+				RemoveFromIndex(MmenuIndex);
+				MenuAudioSettings[MmenuIndex].Cb((MenuAudioSettings[MmenuIndex].value),Decrease);
+				PutToIndex(MmenuIndex);
+			}
+
+			if(ButtonPRessed())
+			{
+				MmenuSelected = false;
+				/* Remove the old icon */
+				GLCD_WriteString(" ",122,MmenuIndex);
+				/* Draw the New */
+				GLCD_WriteString(">",0,MmenuIndex);
+			}
+		}
+		else
+		{
+			if(ROTARY_LEFT)
+			{
+				if(MmenuIndex > 0)
+				{
+					GLCD_WriteString(" ",0,MmenuIndex);
+					MmenuIndex--;
+					redraw = true;
+				}
+			}
+			else if(ROTARY_RIGHT)
+			{
+				if(MmenuIndex < 3)
+				{
+					GLCD_WriteString(" ",0,MmenuIndex);
+					MmenuIndex++;
+					redraw = true;
+				}
+
+			}
+
+			if(redraw)
+			{
+				redraw = false;
+				GLCD_WriteString(">",0,MmenuIndex);
+			}
+
+			if(RotSwPRessed())
+			{
+				/* Remove the old icon */
+				GLCD_WriteString(" ",0,MmenuIndex);
+				/* Draw the New */
+				GLCD_WriteString("<",122,MmenuIndex);
+
+				MmenuSelected = true;
+			}
 		}
 		break;
 	}

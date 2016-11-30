@@ -7,22 +7,24 @@
 #define PREAMP_GENERATE_START  I2C_start(I2C1, TDA7318_I2C_ADDRESS, I2C_Direction_Transmitter)
 #define PREAMP_GENERATE_STOP   I2C_stop(I2C1) // stop the transmission
 
+tAudioSettings AudioSettings;
 
 /* Inits the tda7318 preamp ic */
 void PreampInit()
 {
-	unsigned char volume = PREAMP_STARTUP_VOL;
-	unsigned char bass	 = PREAMP_STARTUP_BASS;
-	unsigned char treble = PREAMP_STARTUP_TREBLE;
+	AudioSettings.volume = PREAMP_STARTUP_VOL;
+	AudioSettings.bass	 = PREAMP_STARTUP_BASS;
+	AudioSettings.treble = PREAMP_STARTUP_TREBLE;
+	AudioSettings.input  = PREAMP_STARTUP_SRC;
 
 	I2C_Init_Amp();
 	GPIO_WriteBit(I2C_PORT,I2C_OE_PIN,Bit_SET); // enable i2c comms
 
-	PreampSetVol(&volume,Nothing);
+	PreampSetVol(&AudioSettings.volume,Nothing);
 	PreampSetSpeakAtt(FrontRight, 20);
-	PreampSetInputGain(PREAMP_STARTUP_SRC,3);
-	PreampSetBass(&bass,Nothing);
-	PreampSetTreble(&treble,Nothing);
+	PreampSetInputGain(AudioSettings.input,PREAMP_DEFAULT_GAIN);
+	PreampSetBass(&AudioSettings.bass,Nothing);
+	PreampSetTreble(&AudioSettings.treble,Nothing);
 
 }
 
@@ -135,3 +137,22 @@ void PreampSetTreble(unsigned char* treble, ePreampAction action)
 	}
 }
 
+void PreampSetSourceWrapper(unsigned char* source, ePreampAction action)
+{
+	bool sourcechanged = false;
+
+	if(action == Increase && *source < 2)
+	{
+		(*source)++;
+		sourcechanged = true;
+	}
+	if(action == Decrease && *source > 0)
+	{
+		(*source)--;
+		sourcechanged = true;
+	}
+	if(sourcechanged)
+	{
+		PreampSetInputGain((eAudioInput)(*source),PREAMP_DEFAULT_GAIN);
+	}
+}

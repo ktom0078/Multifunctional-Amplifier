@@ -4,11 +4,11 @@
 #include "attributes.h"
 #include "preamp.h"
 
-#define MENU_AUDIO_SETTINGS_NUM	3
+#define MENU_AUDIO_SETTINGS_NUM	4
 
 typedef struct
 {
-	unsigned char value;
+	unsigned char* value;
 	void (*Cb)(unsigned char*, ePreampAction);
 }tMenuAudioSettings;
 
@@ -28,10 +28,10 @@ typedef enum
 
 typedef enum
 {
-	ListInit,
-	ListMain
+	StMenuInit,
+	StMenuMain
 
-}eListStates;
+}eMenuStates;
 
 
 void MenuInit();
@@ -39,6 +39,7 @@ void MenuProc();
 bool RotSwPRessed();
 bool ButtonPRessed();
 void ListProc();
+void MainMenuProc();
 
 
 
