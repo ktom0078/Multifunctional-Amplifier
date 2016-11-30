@@ -8,6 +8,13 @@
 #define PREAMP_GENERATE_START  I2C_start(I2C1, TDA7318_I2C_ADDRESS, I2C_Direction_Transmitter)
 #define PREAMP_GENERATE_STOP   I2C_stop(I2C1) // stop the transmission
 
+#define BT_GAIN		0
+#define RCA_GAIN	3
+#define DAC_GAIN	3
+
+static unsigned char GainConfig[] = {DAC_GAIN,RCA_GAIN,BT_GAIN};
+
+
 tAudioSettings AudioSettings;
 
 /* Inits the tda7318 preamp ic */
@@ -143,7 +150,7 @@ void PreampSetSourceWrapper(unsigned char* source, ePreampAction action)
 	bool sourcechanged = false;
 	bool prev_src_dac = false;
 
-	if((ePreampAction)*source == DAC_CS4334)
+	if((eAudioInput)*source == DAC_CS4334)
 	{
 		prev_src_dac = true;
 	}
@@ -160,7 +167,7 @@ void PreampSetSourceWrapper(unsigned char* source, ePreampAction action)
 	}
 	if(sourcechanged)
 	{
-		PreampSetInputGain((eAudioInput)(*source),PREAMP_DEFAULT_GAIN);
+		PreampSetInputGain((eAudioInput)(*source),GainConfig[(unsigned char)(*source)]);
 		/* if the previous source was the dac then pause the track  */
 		if(prev_src_dac)
 		{

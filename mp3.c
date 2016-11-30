@@ -36,8 +36,11 @@ unsigned int Mp3ActIndex = 0;
 bool Mp3OpenFile(char *filename)
 {
 	bool retval = false;
+	volatile FRESULT debug;
 
-	if (f_open(&fil, filename, FA_READ ) == FR_OK)
+	debug = f_open(&fil, filename, FA_READ );
+
+	if (debug == FR_OK)
 	{
 		retval = true;
 	}

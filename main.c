@@ -31,10 +31,6 @@
 
 int main(void)
 {
-	int i=0;
-	unsigned int redraw = 0;
-	char buff[20];
-	char x = 0;
 	SystemInit();
 	Gpio_Init();
 	PreampInit();
@@ -43,12 +39,13 @@ int main(void)
 	Cs43Init();
 	TM_DELAY_Init();
 	TM_USB_MSCHOST_Init();
-	//TIMER3_Configuration(2398);
 	GLCD_Init();
 
 	Mp3MountDevices();
 
-	scan_files("0:");
+	//scan_files("0:");
+
+	scan_files("1:");
 
 	if(AudioSettings.input  == DAC_CS4334)
 	{
@@ -57,13 +54,13 @@ int main(void)
 
     while(1)
     {
-    	TM_USB_MSCHOST_Process();
-    	BTBtnsProc();
-    	MenuProc();
-    	redraw++;
-
-    	Mp3Play((Mp3Array[Mp3ActIndex].Path));
-
+    	if((TM_USB_MSCHOST_Device() == TM_USB_MSCHOST_Result_Connected))
+    	{
+        	TM_USB_MSCHOST_Process();
+        	BTBtnsProc();
+        	MenuProc();
+        	Mp3Play((Mp3Array[Mp3ActIndex].Path));
+    	}
 
     }
 }

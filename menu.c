@@ -278,6 +278,8 @@ void RemoveFromIndex(unsigned char index)
 			/* Remove the last selectable element which the tracklist */
 			GLCD_WriteString(trackoutbuff,6,4);
 			MenuIndexMax = 4;
+			/* Remove the actual track from the screen also */
+			RemoveId3();
 		}
 	}
 	else
@@ -301,6 +303,8 @@ void PutToIndex(unsigned char index)
 			sprintf(trackbuff,"%s",ListString);
 			GLCD_WriteString(trackbuff,6,4);
 			MenuIndexMax = 5;
+			/* Display the ID3 tags again */
+			PutId3();
 		}
 	}
 	else
@@ -321,31 +325,31 @@ void RemoveId3()
 
 void PutId3()
 {
-	char* title;
-	char* filename;
-	char* artist;
+	static char* id3title;
+	static char* id3filename;
+	static char* id3artist;
 	unsigned int TrackIndex;
 
 	TrackIndex = Mp3GetActTrackInd();
 	/* Remove the old data */
 
-	title    = (char*)(&(Mp3Array[TrackIndex].Title));
-	filename = (char*)(&(Mp3Array[TrackIndex].Path));
-	artist   = (char*)(&(Mp3Array[TrackIndex].Artist));
+	id3title    = (char*)(&(Mp3Array[TrackIndex].Title));
+	id3filename = (char*)(&(Mp3Array[TrackIndex].Path));
+	id3artist   = (char*)(&(Mp3Array[TrackIndex].Artist));
 	/* if Artist is existing */
-	if(artist[0])
+	if(id3artist[0])
 	{
-		GLCD_WriteString(artist,0,6);
+		GLCD_WriteString(id3artist,0,6);
 	}
 	/* if Title is existing */
-	if(title[0])
+	if(id3title[0])
 	{
-		GLCD_WriteString(title,0,7);
+		GLCD_WriteString(id3title,0,7);
 	}
 	else
 	{
 		/* use the filename */
-		GLCD_WriteString(filename,0,7);
+		GLCD_WriteString(id3filename,0,7);
 	}
 
 }
@@ -365,8 +369,8 @@ void MainMenuProc()
 		if(AudioSettings.input == DAC_CS4334)
 		{
 			MenuIndexMax = 5;
-			//RemoveId3();
-			//PutId3();
+			RemoveId3();
+			PutId3();
 		}
 		else
 		{
@@ -465,8 +469,8 @@ void MainMenuProc()
 		if(Mp3TrackChanged && AudioSettings.input == DAC_CS4334)
 		{
 			Mp3TrackChanged = false;
-			//RemoveId3();
-			//PutId3();
+			RemoveId3();
+			PutId3();
 		}
 		break;
 	}

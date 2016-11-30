@@ -51,6 +51,7 @@ FRESULT scan_files (
 						if (f_open(&tfil, filename, FA_READ ) == FR_OK)
 						{
 							Mp3ReadId3V2Tag(&tfil, artist, ID3_DATA_LEN, title, ID3_DATA_LEN);
+							f_close(&tfil);
 						}
 					}
 					else
