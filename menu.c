@@ -34,7 +34,7 @@ volatile unsigned char x = 0;
 
 #define ROTARY_RIGHT 	(RE1_Data.Diff > 0)
 #define ROTARY_LEFT 	(RE1_Data.Diff < 0)
-#define PAGE_INDEX_MAX	(Mp3Count != 0 ? (Mp3Count / 8) :0)
+#define PAGE_INDEX_MAX	(Mp3Count != 0 ? (Mp3Count / 9) :0)
 #define PAGE_INDEX_MIN  0
 #define MMENU_INDEX_MIN 0
 #define MMENU_INDEX_MAX 2
@@ -234,7 +234,7 @@ void ListProc()
 				ListState = StMenuInit;
 				overflow = true;
 			}
-			else if(ListIndex < 7 && ((PageIndex * 8) + ListIndex) < Mp3Count)
+			else if(ListIndex < 7 && ((PageIndex * 8) + ListIndex) < (Mp3Count - 1))
 			{
 				/* Remove the old */
 				GLCD_WriteString(" ",0,ListIndex);
@@ -488,4 +488,12 @@ void ChangeToMain()
 	/* Change to Main screen */
 	MenuScreen = Main;
 	MainState = StMenuInit;
+}
+
+/* Change the settings in the menu from external */
+void MenuChangeSetting(unsigned char index,ePreampAction action)
+{
+	RemoveFromIndex(index);
+	MenuAudioSettings[index].Cb((MenuAudioSettings[index].value),action);
+	PutToIndex(index);
 }

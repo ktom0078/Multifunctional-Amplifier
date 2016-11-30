@@ -44,6 +44,6 @@ void ChangeToList();
 void ChangeToMain();
 void RemoveId3();
 void PutId3();
-
+void MenuChangeSetting(unsigned char index,ePreampAction action);
 
 #endif

@@ -43,8 +43,7 @@ int main(void)
 
 	Mp3MountDevices();
 
-	//scan_files("0:");
-
+	scan_files("0:");
 	scan_files("1:");
 
 	if(AudioSettings.input  == DAC_CS4334)
@@ -54,13 +53,10 @@ int main(void)
 
     while(1)
     {
-    	if((TM_USB_MSCHOST_Device() == TM_USB_MSCHOST_Result_Connected))
-    	{
-        	TM_USB_MSCHOST_Process();
-        	BTBtnsProc();
-        	MenuProc();
-        	Mp3Play((Mp3Array[Mp3ActIndex].Path));
-    	}
+        TM_USB_MSCHOST_Process();
+        BTBtnsProc();
+        MenuProc();
+        Mp3Play((Mp3Array[Mp3ActIndex].Path));
 
     }
 }

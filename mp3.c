@@ -151,9 +151,18 @@ bool Mp3Play(char *filename) {
 		}
 		break;
 	case st_stopped:
-		f_close(&fil);
-		retval = false;
-		Mp3_Status = st_end;
+		if(Mp3ActIndex == (Mp3Count - 1))
+		{
+			/* if we ended then go to the end state */
+			f_close(&fil);
+			retval = false;
+			Mp3_Status = st_end;
+		}
+		else
+		{
+			Mp3NextTrack();
+		}
+
 		break;
 	case st_changetr:
 		if(DmaAudioDone)
@@ -263,3 +272,24 @@ unsigned int Mp3GetActTrackInd()
 {
 	return Mp3ActIndex;
 }
+
+void Mp3NextTrack()
+{
+	if(Mp3ActIndex < (Mp3Count - 1))
+	{
+		Mp3_Status = st_changetr;
+		Mp3TrackChanged = true;
+		Mp3ActIndex++;
+	}
+}
+
+void Mp3PrevTrack()
+{
+	if(Mp3ActIndex < 0)
+	{
+		Mp3_Status = st_changetr;
+		Mp3TrackChanged = true;
+		Mp3ActIndex--;
+	}
+}
+

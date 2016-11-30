@@ -37,7 +37,7 @@ extern tAudioSettings AudioSettings;
 #define PREAMP_AUDIO_SW_CMD 	(1<<6)
 #define PREAMP_BASS_CMD			(0x6 << 4)
 #define PREAMP_TREBLE_CMD		(0x7 << 4)
-#define PREAMP_STARTUP_VOL 		22
+#define PREAMP_STARTUP_VOL 		34
 #define PREAMP_STARTUP_BASS 	15
 #define PREAMP_STARTUP_TREBLE 	10
 #define PREAMP_STARTUP_SRC		DAC_CS4334

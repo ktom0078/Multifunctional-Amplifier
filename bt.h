@@ -3,10 +3,8 @@
 
 #include "attributes.h"
 
-#define BT_BUTTON_CMD_LEN	2
+#define BT_BUTTON_CMD_LEN	3
 
-extern bool FlagVolUp;
-extern bool FlagVolDown;
 
 void BTBtnsProc();
 

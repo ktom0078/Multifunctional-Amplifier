@@ -47,6 +47,8 @@ unsigned char Mp3MountDevices();
 void Mp3ChangeTrack(unsigned int index);
 void Mp3PauseTrack();
 void Mp3StartResumeTrack();
+void Mp3NextTrack();
+void Mp3PrevTrack();
 unsigned int Mp3GetActTrackInd();
 
 #endif
