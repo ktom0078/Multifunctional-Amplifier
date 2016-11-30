@@ -12,6 +12,7 @@ char audio_help_buff[AUDIO_BUFF_SIZE];
 int bytes_left;
 char *read_ptr;
 bool loadneeded = true;
+bool Mp3TrackChanged = false;
 
 MP3FrameInfo mp3FrameInfo;
 HMP3Decoder hMP3Decoder;
@@ -158,8 +159,8 @@ bool Mp3Play(char *filename) {
 			retval = false;
 			Mp3_Status = st_init;
 		}
-
 		break;
+	case st_pause:
 	case st_end:
 		/* Do nothing */
 		retval = false;
@@ -235,4 +236,27 @@ void Mp3ChangeTrack(unsigned int index)
 {
 	Mp3_Status = st_changetr;
 	Mp3ActIndex = index;
+	Mp3TrackChanged = true;
+}
+
+void Mp3PauseTrack()
+{
+	Mp3_Status = st_pause;
+}
+
+void Mp3StartResumeTrack()
+{
+	if(Mp3_Status == st_pause)
+	{
+		Mp3_Status = st_play;
+	}
+	else if(Mp3_Status == st_end)
+	{
+    	Mp3_Status = st_init;
+	}
+}
+
+unsigned int Mp3GetActTrackInd()
+{
+	return Mp3ActIndex;
 }

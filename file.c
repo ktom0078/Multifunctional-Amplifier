@@ -66,7 +66,6 @@ FRESULT scan_files (
         {
         	Mp3ActIndex = 0;
         	Mp3ActTrack = (tMp3Track*)(&Mp3Array[Mp3ActIndex]);
-        	Mp3_Status = st_init;
        	}
 
         f_closedir(&dir);

@@ -36,6 +36,7 @@ extern tMp3Track* Mp3Array;
 extern tMp3Track* tMp3Array;
 extern tMp3Track* Mp3ActTrack;
 extern unsigned int Mp3ActIndex;
+extern bool Mp3TrackChanged;
 
 
 bool Mp3Play(char *filename);
@@ -44,5 +45,8 @@ void MP3_Debug(int err);
 void Mp3SendBuffer();
 unsigned char Mp3MountDevices();
 void Mp3ChangeTrack(unsigned int index);
+void Mp3PauseTrack();
+void Mp3StartResumeTrack();
+unsigned int Mp3GetActTrackInd();
 
 #endif

@@ -50,6 +50,11 @@ int main(void)
 
 	scan_files("0:");
 
+	if(AudioSettings.input  == DAC_CS4334)
+	{
+		Mp3StartResumeTrack();
+	}
+
     while(1)
     {
     	TM_USB_MSCHOST_Process();

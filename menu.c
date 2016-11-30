@@ -18,8 +18,9 @@ static bool RotSwPress = false;
 static bool ButtonPress = false;
 static bool overflow = true;
 static bool MmenuSelected = false;
-static unsigned char MmenuIndex;
+static unsigned char MmenuIndex = 0;
 static char PageIndex;
+static unsigned char MenuIndexMax;
 static tMenuAudioSettings MenuAudioSettings[MENU_AUDIO_SETTINGS_NUM] =
 {
 /* 		value										callback */
@@ -43,6 +44,7 @@ volatile unsigned char x = 0;
 #define VolumeString  	"Attenuation:"
 #define BassString  	"Bass:"
 #define TrebleString  	"Treble:"
+#define ListString  	"Tracklist"
 
 #define DAC_STRING		"DAC"
 #define RCA_STRING		"RCA"
@@ -50,7 +52,7 @@ volatile unsigned char x = 0;
 
 char* MenuStrings[] =
 {
-	VolumeString,TrebleString,BassString,SourceString
+	VolumeString,TrebleString,BassString,SourceString,ListString
 };
 
 char* SourceStrings[] =
@@ -252,6 +254,11 @@ void ListProc()
 		{
 			Mp3ChangeTrack((PageIndex * 8) + ListIndex);
 		}
+
+		if(ButtonPRessed())
+		{
+			ChangeToMain();
+		}
 		break;
 	}
 }
@@ -259,9 +266,19 @@ void ListProc()
 void RemoveFromIndex(unsigned char index)
 {
 	char buff[12],outbuff[12];
+	char trackbuff[12],trackoutbuff[12];
 	if(index == 3)
 	{
 		sprintf(buff,"%s",SourceStrings[AudioSettings.input]);
+		if(AudioSettings.input == DAC_CS4334)
+		{
+			/* If we dont use DAC then remove the tracklist */
+			sprintf(trackbuff,"%s",ListString);
+			StrFillSpace(strlen(trackbuff),trackoutbuff);
+			/* Remove the last selectable element which the tracklist */
+			GLCD_WriteString(trackoutbuff,6,4);
+			MenuIndexMax = 4;
+		}
 	}
 	else
 	{
@@ -273,16 +290,64 @@ void RemoveFromIndex(unsigned char index)
 }
 void PutToIndex(unsigned char index)
 {
-	char buff[10];
+	char buff[12];
+	char trackbuff[12];
 	if(index == 3)
 	{
 		sprintf(buff,"%s",SourceStrings[AudioSettings.input]);
+		if(AudioSettings.input == DAC_CS4334)
+		{
+			/* Display tracklist again if we use it */
+			sprintf(trackbuff,"%s",ListString);
+			GLCD_WriteString(trackbuff,6,4);
+			MenuIndexMax = 5;
+		}
 	}
 	else
 	{
 		sprintf(buff,"%d",(*MenuAudioSettings[index].value));
 	}
 	GLCD_WriteString(buff,6 + (6 * strlen(MenuStrings[index])),index);
+}
+
+void RemoveId3()
+{
+	char buff[20];
+	StrFillSpace(20,buff);
+	GLCD_WriteString(buff,0,6);
+	GLCD_WriteString(buff,0,7);
+
+}
+
+void PutId3()
+{
+	char* title;
+	char* filename;
+	char* artist;
+	unsigned int TrackIndex;
+
+	TrackIndex = Mp3GetActTrackInd();
+	/* Remove the old data */
+
+	title    = (char*)(&(Mp3Array[TrackIndex].Title));
+	filename = (char*)(&(Mp3Array[TrackIndex].Path));
+	artist   = (char*)(&(Mp3Array[TrackIndex].Artist));
+	/* if Artist is existing */
+	if(artist[0])
+	{
+		GLCD_WriteString(artist,0,6);
+	}
+	/* if Title is existing */
+	if(title[0])
+	{
+		GLCD_WriteString(title,0,7);
+	}
+	else
+	{
+		/* use the filename */
+		GLCD_WriteString(filename,0,7);
+	}
+
 }
 
 void MainMenuProc()
@@ -295,22 +360,35 @@ void MainMenuProc()
 	{
 	case StMenuInit:
 		GLCD_Clear();
-		MmenuIndex = 0;
 		MmenuSelected = false;
-		GLCD_WriteString(">",0,0);
-		for(i=0;i<4;i++)
+		GLCD_WriteString(">",0,MmenuIndex);
+		if(AudioSettings.input == DAC_CS4334)
+		{
+			MenuIndexMax = 5;
+			//RemoveId3();
+			//PutId3();
+		}
+		else
+		{
+			MenuIndexMax = 4;
+		}
+
+		for(i=0;i<MenuIndexMax;i++)
 		{
 			GLCD_WriteString(MenuStrings[i],6,i);
-			if(i == 3)
+			/* Skip the 4th element which has no value  */
+			if(i <= 3)
 			{
-				sprintf(buff,"%s",SourceStrings[AudioSettings.input]);
+				if(i == 3)
+				{
+					sprintf(buff,"%s",SourceStrings[AudioSettings.input]);
+				}
+				else
+				{
+					sprintf(buff,"%d",*((char*)(((char*)(&AudioSettings))+i)));
+				}
+				GLCD_WriteString(buff,6 * strlen(MenuStrings[i]) + 6,i);
 			}
-			else
-			{
-				sprintf(buff,"%d",*((char*)(((char*)(&AudioSettings))+i)));
-			}
-			GLCD_WriteString(buff,6 * strlen(MenuStrings[i]) + 6,i);
-
 		}
 
 		MainState = StMenuMain;
@@ -332,8 +410,8 @@ void MainMenuProc()
 				MenuAudioSettings[MmenuIndex].Cb((MenuAudioSettings[MmenuIndex].value),Decrease);
 				PutToIndex(MmenuIndex);
 			}
-
-			if(ButtonPRessed())
+			/* Back and Rotary switch butons will also exit  */
+			if(ButtonPRessed() || RotSwPRessed())
 			{
 				MmenuSelected = false;
 				/* Remove the old icon */
@@ -355,7 +433,7 @@ void MainMenuProc()
 			}
 			else if(ROTARY_RIGHT)
 			{
-				if(MmenuIndex < 3)
+				if(MmenuIndex < (MenuIndexMax-1))
 				{
 					GLCD_WriteString(" ",0,MmenuIndex);
 					MmenuIndex++;
@@ -372,6 +450,10 @@ void MainMenuProc()
 
 			if(RotSwPRessed())
 			{
+				if(MmenuIndex == 4)
+				{
+					ChangeToList();
+				}
 				/* Remove the old icon */
 				GLCD_WriteString(" ",0,MmenuIndex);
 				/* Draw the New */
@@ -380,6 +462,26 @@ void MainMenuProc()
 				MmenuSelected = true;
 			}
 		}
+		if(Mp3TrackChanged && AudioSettings.input == DAC_CS4334)
+		{
+			Mp3TrackChanged = false;
+			//RemoveId3();
+			//PutId3();
+		}
 		break;
 	}
+}
+
+void ChangeToList()
+{
+	/* Change to List screen */
+	MenuScreen = List;
+	ListState = StMenuInit;
+}
+
+void ChangeToMain()
+{
+	/* Change to Main screen */
+	MenuScreen = Main;
+	MainState = StMenuInit;
 }

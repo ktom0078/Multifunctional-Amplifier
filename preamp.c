@@ -3,6 +3,7 @@
 #include "gpio.h"
 #include "attributes.h"
 #include "tm_stm32f4_rotary_encoder.h"
+#include "mp3.h"
 
 #define PREAMP_GENERATE_START  I2C_start(I2C1, TDA7318_I2C_ADDRESS, I2C_Direction_Transmitter)
 #define PREAMP_GENERATE_STOP   I2C_stop(I2C1) // stop the transmission
@@ -140,6 +141,12 @@ void PreampSetTreble(unsigned char* treble, ePreampAction action)
 void PreampSetSourceWrapper(unsigned char* source, ePreampAction action)
 {
 	bool sourcechanged = false;
+	bool prev_src_dac = false;
+
+	if((ePreampAction)*source == DAC_CS4334)
+	{
+		prev_src_dac = true;
+	}
 
 	if(action == Increase && *source < 2)
 	{
@@ -154,5 +161,15 @@ void PreampSetSourceWrapper(unsigned char* source, ePreampAction action)
 	if(sourcechanged)
 	{
 		PreampSetInputGain((eAudioInput)(*source),PREAMP_DEFAULT_GAIN);
+		/* if the previous source was the dac then pause the track  */
+		if(prev_src_dac)
+		{
+			Mp3PauseTrack();
+		}
+		/* if the new source is the dac then play the track */
+		if((eAudioInput)(*source) == DAC_CS4334)
+		{
+			Mp3StartResumeTrack();
+		}
 	}
 }

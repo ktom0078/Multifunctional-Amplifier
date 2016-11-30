@@ -40,7 +40,10 @@ bool RotSwPRessed();
 bool ButtonPRessed();
 void ListProc();
 void MainMenuProc();
-
+void ChangeToList();
+void ChangeToMain();
+void RemoveId3();
+void PutId3();
 
 
 #endif
