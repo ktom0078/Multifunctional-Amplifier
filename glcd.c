@@ -151,7 +151,7 @@ void GLCD_Write_Block(char m_data,char cX,char cY){
 void GLCD_WriteString(const char* string,char Y, char X){
 	char temp = 0;
 	int i=0;
-	while(string[i]!='\0'){
+	while(string[i]!='\0' && i < 21){
 		temp = string[i];
 		GLCD_Write_Char(temp-32,X,Y+6*i);
 		i++;

@@ -280,6 +280,12 @@ void RemoveFromIndex(unsigned char index)
 			MenuIndexMax = 4;
 			/* Remove the actual track from the screen also */
 			RemoveId3();
+			if(MmenuIndex == 4)
+			{
+				/* Remove from the Tracklist when it disappears*/
+				GLCD_WriteString(" ",0,MmenuIndex);
+				GLCD_WriteString(">",0,--MmenuIndex);
+			}
 		}
 	}
 	else
@@ -316,8 +322,8 @@ void PutToIndex(unsigned char index)
 
 void RemoveId3()
 {
-	char buff[20];
-	StrFillSpace(20,buff);
+	char buff[22];
+	StrFillSpace(21,buff);
 	GLCD_WriteString(buff,0,6);
 	GLCD_WriteString(buff,0,7);
 
@@ -493,7 +499,14 @@ void ChangeToMain()
 /* Change the settings in the menu from external */
 void MenuChangeSetting(unsigned char index,ePreampAction action)
 {
-	RemoveFromIndex(index);
+	bool OnMainMenu = (MenuScreen == Main);
+
+	if(OnMainMenu) RemoveFromIndex(index);
 	MenuAudioSettings[index].Cb((MenuAudioSettings[index].value),action);
-	PutToIndex(index);
+	if(OnMainMenu)
+	{
+		PutToIndex(index);
+
+	}
+
 }

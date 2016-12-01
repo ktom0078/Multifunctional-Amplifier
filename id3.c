@@ -106,7 +106,7 @@ unsigned int Mp3ReadId3V2Tag(FIL* pInFile, char* pszArtist, unsigned int unArtis
         {
           return 1;
         }
-        if((frhd[0] == 0) || (StrCmp(frhd, "3DI") == 1))
+        if((frhd[0] == 0) || (strncmp(frhd, "3DI", 3) == 1))
         {
           break;
         }
@@ -130,7 +130,7 @@ unsigned int Mp3ReadId3V2Tag(FIL* pInFile, char* pszArtist, unsigned int unArtis
           }
         }
 
-        if(StrCmp(szFrameId, "TPE1") == 1)
+        if(strcmp(szFrameId, "TPE1") == 0)
         {
           // artist
           if(Mp3ReadId3V2Text(pInFile, unFrameSize, pszArtist, unArtistSize) != 0)
@@ -139,7 +139,7 @@ unsigned int Mp3ReadId3V2Tag(FIL* pInFile, char* pszArtist, unsigned int unArtis
           }
           nFramesToRead--;
         }
-        else if(StrCmp(szFrameId, "TIT2") == 1) //HAX
+        else if(strcmp(szFrameId, "TIT2") == 0) //HAX
         {
           // title
           if(Mp3ReadId3V2Text(pInFile, unFrameSize, pszTitle, unTitleSize) != 0)

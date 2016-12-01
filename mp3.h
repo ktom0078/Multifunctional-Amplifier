@@ -16,7 +16,7 @@
 #define 	MP3_OVER_RATE		4
 #define 	MP3_BUFF_SIZE 		(MP3_OVER_RATE*MP3_FRAME_SIZE)
 #define		AUDIO_BUFF_SIZE		(MP3_OVER_RATE*1940)
-#define 	ID3_DATA_LEN		20
+#define 	ID3_DATA_LEN		31
 
 typedef enum  {
 	st_init,st_play,st_stopped,st_pause,st_changetr,st_end
