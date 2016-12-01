@@ -285,7 +285,7 @@ void Mp3NextTrack()
 
 void Mp3PrevTrack()
 {
-	if(Mp3ActIndex < 0)
+	if(Mp3ActIndex > 0)
 	{
 		Mp3_Status = st_changetr;
 		Mp3TrackChanged = true;

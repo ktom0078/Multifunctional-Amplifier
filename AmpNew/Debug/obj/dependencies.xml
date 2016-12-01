@@ -340,12 +340,6 @@
       <source file="..\..\..\tm_stm32f4_rotary_encoder.c" lastModified="14c40cbd738">
          <include file="..\..\..\tm_stm32f4_rotary_encoder.h"/>
       </source>
-      <source file="..\..\..\mp3.c" lastModified="158b7613b79">
-         <include file="..\..\..\mp3.h"/>
-         <include file="..\..\..\gpio.h"/>
-         <include file="..\..\..\menu.h"/>
-         <include file="..\..\..\tm_stm32f4_usb_msc_host.h"/>
-      </source>
       <source file="..\..\..\tm_stm32f4_usb_msc_host.h" lastModified="1585992c731">
          <include file="..\..\..\cmsis_boot\stm32f4xx.h"/>
          <include file="..\..\..\defines.h"/>
